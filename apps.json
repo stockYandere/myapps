@@ -102,13 +102,14 @@
       "accent": "#7fe3bd",
       "accent2": "#2fbf8f",
       "highlight": "그림의 생성 정보 확인·저장",
-      "summary": "아카라이브의 AI 그림을 눌러 프롬프트와 생성 설정을 확인하는 앱입니다.",
+      "summary": "아카라이브의 AI 그림을 눌러 프롬프트와 생성 설정을 확인하는 앱입니다. NAI Pocket (r)로 그림을 바로 보낼 수 있습니다.",
       "requirement": "이미지에 포함된 생성 정보를 읽습니다.",
       "release": {
-        "versionName": "0.1.37",
-        "publishedAt": "2026-10-14",
-        "sizeLabel": "92.7 KB",
-        "apkUrl": ""
+        "versionName": "0.1.1",
+        "publishedAt": "2026-10-15",
+        "size": 865220,
+        "sha256": "f8e1826cf79555247f28081a608c76172ca8cb12f0cdda0e4e1243a2f96dc102",
+        "apkUrl": "https://github.com/stockYandere/myapps/raw/main/downloads/Arca-Inspect-R.apk"
       },
       "featureGroups": [
         {
@@ -153,7 +154,11 @@
           "body": "원본 그림을 저장하거나, NAI Pocket으로 보내 같은 설정으로 다시 생성할 수 있습니다."
         }
       ],
-      "notes": []
+      "notes": [
+        "(R) 버전은 기존 Arca Inspect와 별도 앱으로 설치됩니다. 스크랩 등 기존 앱 데이터는 옮겨지지 않습니다.",
+        "Android 10 이상에서 동작합니다."
+      ],
+      "edition": "(R)"
     }
   ]
 }
