@@ -91,7 +91,13 @@
       "notes": [
         "(R) 버전은 기존 NAI Pocket과 별도 앱으로 설치됩니다. 기존 앱의 토큰·기록은 옮겨지지 않으니 토큰을 다시 입력해 주세요.",
         "NovelAI 공식 앱이 아닙니다."
-      ]
+      ],
+      "installer": {
+        "path": "downloads/NAI-Pocket-R.apk",
+        "versionName": "0.11.43(R)",
+        "size": 5152932,
+        "sha256": "1f167ee6860242b73c31975499ac41e9e5eac2e3a1d662c2c85bdfe833da3b0b"
+      }
     },
     {
       "id": "arca-inspect",
@@ -159,7 +165,13 @@
       ],
       "manifest": "apps/arca-inspect/latest.json",
       "history": "apps/arca-inspect/history.json",
-      "inAppUpdate": true
+      "inAppUpdate": true,
+      "installer": {
+        "path": "downloads/Arca-Inspect-R.apk",
+        "versionName": "0.1.2",
+        "size": 869316,
+        "sha256": "4f4825e1fc409a57f85b223007602765c07e18ab477f9a132eb48e2b7f1396e0"
+      }
     }
   ]
 }

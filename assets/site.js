@@ -103,7 +103,30 @@
 
   // ---- views ---------------------------------------------------------------
 
+  /**
+   * Installer APK stored in this repository: served from the same origin, so the
+   * browser downloads it directly instead of following GitHub release redirects.
+   */
+  function installerUrl(app) {
+    return app.installer && app.installer.path ? app.installer.path : '';
+  }
+
+  function installerFileName(app) {
+    return installerUrl(app).split('/').pop();
+  }
+
+  function installerNote(app, rel) {
+    var inst = app.installer;
+    if (!inst || !inst.versionName || !rel.version || inst.versionName === rel.version) return '';
+    return '<p class="download-note">설치 파일 v' + esc(inst.versionName) +
+      (app.inAppUpdate ? ' · 설치하면 앱이 v' + esc(rel.version) + '(으)로 업데이트를 안내합니다' : '') + '</p>';
+  }
+
   function downloadButton(app, rel) {
+    var local = installerUrl(app);
+    if (local) {
+      return '<a class="btn btn-primary" href="' + esc(local) + '" download="' + esc(installerFileName(app)) + '" type="application/vnd.android.package-archive">' + ICON_DOWNLOAD + 'APK 다운로드</a>';
+    }
     if (rel.url) {
       return '<a class="btn btn-primary" href="' + esc(rel.url) + '" download>' + ICON_DOWNLOAD + 'APK 다운로드</a>';
     }
@@ -144,7 +167,7 @@
       '<div class="actions">' +
       '<a class="btn" href="#/' + esc(app.id) + '">상세 정보 · 사용법</a>' +
       downloadButton(app, rel) +
-      '</div>' +
+      '</div>' + installerNote(app, rel) +
       '</article>';
   }
 
@@ -201,7 +224,7 @@
       appHead(app, rel, true) +
       '<p class="highlight"><span class="pill">핵심</span>' + esc(app.highlight) + '</p>' +
       '<p class="summary">' + esc(app.summary) + '</p>' +
-      '<div class="actions">' + downloadButton(app, rel) + '</div>' +
+      '<div class="actions">' + downloadButton(app, rel) + '</div>' + installerNote(app, rel) +
       '<p class="download-note">' + esc([rel.date && formatDate(rel.date), rel.size, app.requirement].filter(Boolean).join(' · ')) + '</p>' +
       (rel.sha256 ? '<div class="verify"><span>SHA-256</span><code>' + esc(rel.sha256) + '</code>' +
         '<button class="copy" type="button" data-copy="' + esc(rel.sha256) + '">복사</button></div>' : '') +
