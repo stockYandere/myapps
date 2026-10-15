@@ -7,8 +7,8 @@
 
 | 경로 | 내용 |
 |---|---|
-| `index.html`, `assets/` | 사이트 (앱 목록, 앱별 상세 정보·사용법·업데이트 기록) |
-| `apps.json` | 앱 소개: 이름, 핵심 문구, 기능, 사용법, 알아두세요. **직접 편집** |
+| `index.html`, `assets/` | 사이트. 한 화면 구성(모바일에서 스크롤 없음): 상단 번호 탭(1, 2, 3…)으로 앱 선택, 앱마다 소개·사용법·기능·업데이트를 ←/→ 페이지로 표시 |
+| `apps.json` | 앱 소개: 이름, 핵심 문구, 핵심 기능(`core`), 기능, 사용법, 알아두세요. **직접 편집** |
 | `apps/<앱>/latest.json` | 최신 버전 정보(APK 주소, 크기, SHA-256, 변경 내용). 앱 내 업데이트가 이 파일을 읽음. **자동 생성** |
 | `apps/<앱>/history.json` | 최근 버전 기록(최대 30개). **자동 생성** |
 | Releases | APK 파일. 태그 형식 `<앱>-v<버전>` (예: `nai-pocket-v0.11.40r`) |
@@ -21,7 +21,9 @@
 
 ## 앱 추가하기
 
-1. `apps.json`의 `apps` 배열에 항목을 추가합니다. `accent`, `accent2`는 카드 색입니다.
+1. `apps.json`의 `apps` 배열에 항목을 추가합니다. 배열 순서대로 상단 탭 번호(1, 2, 3…)가 붙고, 키보드 숫자 키로도 고를 수 있습니다. `accent`, `accent2`는 카드 색입니다.
+   - `core`: 첫 화면(소개)에 보일 핵심 기능 3~4개. 짧게 적어야 모바일 한 화면에 들어갑니다. 없으면 `featureGroups` 각 묶음의 첫 항목을 씁니다.
+   - `usage`: 사용법 단계. 한 단계가 한 페이지(1, 2, 3…)이고, `notes`(알아두세요)는 마지막 `!` 페이지로 붙습니다.
 2. 자동 배포가 없는 앱은 `release`에 버전·날짜·크기·APK 주소를 직접 적습니다. `apkUrl`이 비어 있으면 "APK 준비 중"으로 표시됩니다.
    ```json
    "release": { "versionName": "0.1.37", "publishedAt": "2026-10-14", "sizeLabel": "92.7 KB", "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.37/Arca-Inspect-0.1.37.apk" }
