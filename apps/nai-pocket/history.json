@@ -2,6 +2,18 @@
   {
     "app": "nai-pocket",
     "packageName": "com.example.novelaiaccount.r",
+    "versionCode": 96,
+    "versionName": "0.11.44(R)",
+    "apkUrl": "https://github.com/stockYandere/myapps/releases/download/nai-pocket-v0.11.44R/NAI-Pocket-0.11.44R.apk",
+    "sha256": "cb09036a08dd7931331e5ba9ead820ef2ec46531e3468f03f8ea3ddf4304b325",
+    "size": 5152932,
+    "minSdk": 23,
+    "publishedAt": "2026-10-15T21:17:13Z",
+    "notes": "앱을 켤 때 오른쪽 기록 영역이 닫혀 있다가 열리는 것처럼 움직이던 현상 수정(처음부터 열린 상태로 표시). 빈 결과 화면 안내 문구를 짧게 줄이고 단어 단위로 줄바꿈해 글자가 가장자리로 밀리지 않게 정렬. 폭 360dp 화면에서 기록 영역이 화면 밖으로 잘리던 문제 수정."
+  },
+  {
+    "app": "nai-pocket",
+    "packageName": "com.example.novelaiaccount.r",
     "versionCode": 95,
     "versionName": "0.11.43(R)",
     "apkUrl": "https://github.com/stockYandere/myapps/releases/download/nai-pocket-v0.11.43R/NAI-Pocket-0.11.43R.apk",
