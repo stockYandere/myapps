@@ -2,6 +2,18 @@
   {
     "app": "nai-pocket",
     "packageName": "com.example.novelaiaccount.r",
+    "versionCode": 95,
+    "versionName": "0.11.43(R)",
+    "apkUrl": "https://github.com/stockYandere/myapps/releases/download/nai-pocket-v0.11.43R/NAI-Pocket-0.11.43R.apk",
+    "sha256": "1f167ee6860242b73c31975499ac41e9e5eac2e3a1d662c2c85bdfe833da3b0b",
+    "size": 5152932,
+    "minSdk": 23,
+    "publishedAt": "2026-10-15T20:45:01Z",
+    "notes": "앱 이름을 NAI Pocket(R)로 변경(공백 없이 대문자 R). 버전 표기도 0.11.43(R) 형식으로 통일."
+  },
+  {
+    "app": "nai-pocket",
+    "packageName": "com.example.novelaiaccount.r",
     "versionCode": 94,
     "versionName": "0.11.42(r)",
     "apkUrl": "https://github.com/stockYandere/myapps/releases/download/nai-pocket-v0.11.42r/NAI-Pocket-0.11.42r.apk",
