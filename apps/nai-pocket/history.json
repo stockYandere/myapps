@@ -2,6 +2,18 @@
   {
     "app": "nai-pocket",
     "packageName": "com.example.novelaiaccount.r",
+    "versionCode": 94,
+    "versionName": "0.11.42(r)",
+    "apkUrl": "https://github.com/stockYandere/myapps/releases/download/nai-pocket-v0.11.42r/NAI-Pocket-0.11.42r.apk",
+    "sha256": "8a4cbf70c0e3862c1c0f1aff9e61e00ca0f72942e251f0b50e5391c8f7f4e48c",
+    "size": 5152932,
+    "minSdk": 23,
+    "publishedAt": "2026-10-15T20:18:09Z",
+    "notes": "전용 서명 키로 전환. 공개된 디버그 키 대신 이 앱만의 키(release-signing.p12)로 서명하고, APK 서명 v3의 키 교체 증명(signing.lineage)을 함께 넣어 기존 설치본에 그대로 업데이트됨(앱 삭제·데이터 손실 없음). Android 9 이상에서는 이 업데이트 이후 옛 디버그 키로만 서명한 APK가 앱을 덮어쓸 수 없음.\n\n자주 쓰는 문구 줄을 메인 화면과 캐릭터 부정 탭에서도 입력칸 위로 옮겨 모든 프롬프트 화면에서 같은 위치. 쓰이지 않던 옛 화면 파일 14개 삭제. 랜덤 전체 목록의 한 페이지 항목 수가 페이지를 넘길 때마다 줄어들던 문제 수정. 배포 전에 실제 브라우저 UI 테스트를 실행."
+  },
+  {
+    "app": "nai-pocket",
+    "packageName": "com.example.novelaiaccount.r",
     "versionCode": 93,
     "versionName": "0.11.41(r)",
     "apkUrl": "https://github.com/stockYandere/myapps/releases/download/nai-pocket-v0.11.41r/NAI-Pocket-0.11.41r.apk",
