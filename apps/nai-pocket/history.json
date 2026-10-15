@@ -1,0 +1,14 @@
+[
+  {
+    "app": "nai-pocket",
+    "packageName": "com.example.novelaiaccount.r",
+    "versionCode": 92,
+    "versionName": "0.11.40(r)",
+    "apkUrl": "https://github.com/stockYandere/myapps/releases/download/nai-pocket-v0.11.40r/NAI-Pocket-0.11.40r.apk",
+    "sha256": "9ece073ea5dfae3ad6190d6f10f34775dac462bb84a7a2ff259f0432793bc103",
+    "size": 5485465,
+    "minSdk": 23,
+    "publishedAt": "2026-10-15T13:55:51Z",
+    "notes": "앱 안에서 새 버전 확인·업데이트. 앱을 켤 때(이후 6시간마다) 공개 배포 저장소(myapps)의 최신 버전 정보를 확인하고, 새 버전이 있으면 변경 내용과 함께 업데이트 여부를 물음. 업데이트를 누르면 APK를 받아 크기·SHA-256을 검증한 뒤 Android 설치 화면으로 연결. '나중에'를 누르면 같은 버전은 24시간 동안 다시 묻지 않음. 처음 한 번은 'NAI Pocket (r)'의 '이 출처 허용'이 필요.\n\n버전 태그를 올리면 GitHub Actions가 APK를 빌드·테스트해 myapps 저장소의 릴리스와 최신 버전 정보에 자동 게시."
+  }
+]
