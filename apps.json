@@ -7,8 +7,7 @@
   "apps": [
     {
       "id": "nai-pocket",
-      "name": "NAI Pocket",
-      "edition": "(r)",
+      "name": "NAI Pocket(R)",
       "platform": "Android",
       "icon": "N",
       "accent": "#b9a2ff",
@@ -82,35 +81,28 @@
         },
         {
           "title": "다른 그림의 정보 불러오기",
-          "body": "갤러리에서 그림을 고르거나, 다른 앱에서 공유하기 → NAI Pocket (r)을 고르면 생성 정보를 불러옵니다. 여러 장은 프롬프트 세트로 열립니다."
+          "body": "갤러리에서 그림을 고르거나, 다른 앱에서 공유하기 → NAI Pocket(R)을 고르면 생성 정보를 불러옵니다. 여러 장은 프롬프트 세트로 열립니다."
         },
         {
           "title": "업데이트",
-          "body": "새 버전이 나오면 앱을 켤 때 알려 줍니다. 업데이트 → 설치를 누르면 끝입니다. 처음 한 번은 'NAI Pocket (r)'의 '이 출처 허용'을 켜야 합니다."
+          "body": "새 버전이 나오면 앱을 켤 때 알려 줍니다. 업데이트 → 설치를 누르면 끝입니다. 처음 한 번은 'NAI Pocket(R)'의 '이 출처 허용'을 켜야 합니다."
         }
       ],
       "notes": [
-        "(r) 버전은 기존 NAI Pocket과 별도 앱으로 설치됩니다. 기존 앱의 토큰·기록은 옮겨지지 않으니 토큰을 다시 입력해 주세요.",
+        "(R) 버전은 기존 NAI Pocket과 별도 앱으로 설치됩니다. 기존 앱의 토큰·기록은 옮겨지지 않으니 토큰을 다시 입력해 주세요.",
         "NovelAI 공식 앱이 아닙니다."
       ]
     },
     {
       "id": "arca-inspect",
-      "name": "Arca Inspect",
+      "name": "Arca Inspect(R)",
       "platform": "Android",
       "icon": "AI",
       "accent": "#7fe3bd",
       "accent2": "#2fbf8f",
       "highlight": "그림의 생성 정보 확인·저장",
-      "summary": "아카라이브의 AI 그림을 눌러 프롬프트와 생성 설정을 확인하는 앱입니다. NAI Pocket (r)로 그림을 바로 보낼 수 있습니다.",
+      "summary": "아카라이브의 AI 그림을 눌러 프롬프트와 생성 설정을 확인하는 앱입니다. NAI Pocket(R)로 그림을 바로 보낼 수 있습니다.",
       "requirement": "이미지에 포함된 생성 정보를 읽습니다.",
-      "release": {
-        "versionName": "0.1.1",
-        "publishedAt": "2026-10-15",
-        "size": 865220,
-        "sha256": "f8e1826cf79555247f28081a608c76172ca8cb12f0cdda0e4e1243a2f96dc102",
-        "apkUrl": "https://github.com/stockYandere/myapps/raw/main/downloads/Arca-Inspect-R.apk"
-      },
       "featureGroups": [
         {
           "title": "생성 정보",
@@ -138,6 +130,13 @@
             "당겨서 새로고침 · +로 새 탭 추가",
             "☆로 게시글 스크랩 · 번호 목록·삭제·페이지 이동"
           ]
+        },
+        {
+          "title": "업데이트",
+          "items": [
+            "새 버전 알림 · 앱 안에서 바로 업데이트",
+            "받은 파일의 크기·SHA-256 검증 후 설치"
+          ]
         }
       ],
       "usage": [
@@ -158,7 +157,9 @@
         "(R) 버전은 기존 Arca Inspect와 별도 앱으로 설치됩니다. 스크랩 등 기존 앱 데이터는 옮겨지지 않습니다.",
         "Android 10 이상에서 동작합니다."
       ],
-      "edition": "(R)"
+      "manifest": "apps/arca-inspect/latest.json",
+      "history": "apps/arca-inspect/history.json",
+      "inAppUpdate": true
     }
   ]
 }

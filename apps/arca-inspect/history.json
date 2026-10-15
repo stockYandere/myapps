@@ -1,0 +1,14 @@
+[
+  {
+    "app": "arca-inspect",
+    "packageName": "app.arcainspect.r",
+    "versionCode": 3,
+    "versionName": "0.1.2",
+    "apkUrl": "https://github.com/stockYandere/myapps/raw/main/downloads/Arca-Inspect-R-v0.1.2.apk",
+    "sha256": "4f4825e1fc409a57f85b223007602765c07e18ab477f9a132eb48e2b7f1396e0",
+    "size": 869316,
+    "minSdk": 23,
+    "publishedAt": "2026-10-15T20:36:21Z",
+    "notes": "- 앱 안에서 새 버전 확인·업데이트. 앱을 켤 때(이후 6시간마다) 공개 배포 저장소(myapps)의 최신 버전 정보를 확인하고, 새 버전이 있으면 변경 내용과 함께 업데이트 여부를 물음. 업데이트를 누르면 APK를 받아 크기·SHA-256을 검증한 뒤 Android 설치 화면으로 연결. '나중에'는 같은 버전을 24시간 동안 다시 묻지 않음. 처음 한 번은 'Arca Inspect(R)'의 '이 출처 허용'이 필요.\n- 버전을 올린 커밋을 main에 push하면 GitHub Actions가 빌드·테스트 후 myapps에 자동 게시."
+  }
+]
