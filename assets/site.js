@@ -2,8 +2,17 @@
   'use strict';
 
   var root = document.getElementById('app');
+  var tabsEl = document.getElementById('tabs');
   var state = { site: {}, apps: [] };
+  var current = { app: null, view: 'about', index: 0 };
   var NEW_DAYS = 7;
+  var SWIPE_MIN = 48;
+  var VIEWS = [
+    { id: 'about', label: '소개' },
+    { id: 'usage', label: '사용법' },
+    { id: 'features', label: '기능' },
+    { id: 'history', label: '업데이트' }
+  ];
 
   // ---- theme ---------------------------------------------------------------
 
@@ -16,9 +25,9 @@
   }
   applyTheme(storedTheme());
   document.getElementById('themeToggle').addEventListener('click', function () {
-    var current = document.documentElement.getAttribute('data-theme') ||
+    var active = document.documentElement.getAttribute('data-theme') ||
       (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-    var next = current === 'light' ? 'dark' : 'light';
+    var next = active === 'light' ? 'dark' : 'light';
     applyTheme(next);
     try { localStorage.setItem('theme', next); } catch (e) {}
   });
@@ -55,16 +64,23 @@
     });
   }
 
-  function allFeatures(app) {
-    return (app.featureGroups || []).reduce(function (all, group) { return all.concat(group.items || []); }, []);
-  }
-
   function accentStyle(app) {
     return '--a:' + esc(app.accent || '#b9a2ff') + ';--a2:' + esc(app.accent2 || app.accent || '#7c6cff');
   }
 
+  /** Short feature list for the main view: `core` in apps.json, else the first item of each group. */
+  function coreFeatures(app) {
+    if (app.core && app.core.length) return app.core;
+    return (app.featureGroups || []).map(function (g) { return (g.items || [])[0]; }).filter(Boolean).slice(0, 4);
+  }
+
+  function list(items, cls) {
+    return '<ul class="' + cls + '">' + items.map(function (f) { return '<li>' + esc(f) + '</li>'; }).join('') + '</ul>';
+  }
+
   var ICON_DOWNLOAD = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>';
-  var ICON_BACK = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>';
+  var ICON_PREV = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>';
+  var ICON_NEXT = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>';
 
   // ---- data ----------------------------------------------------------------
 
@@ -101,7 +117,7 @@
     return { version: r.versionName, date: r.publishedAt, size: r.sizeLabel || formatSize(r.size), url: r.apkUrl, sha256: r.sha256 };
   }
 
-  // ---- views ---------------------------------------------------------------
+  // ---- download ------------------------------------------------------------
 
   /**
    * Installer APK stored in this repository: served from the same origin, so the
@@ -119,7 +135,7 @@
     var inst = app.installer;
     if (!inst || !inst.versionName || !rel.version || inst.versionName === rel.version) return '';
     return '<p class="download-note">설치 파일 v' + esc(inst.versionName) +
-      (app.inAppUpdate ? ' · 설치하면 앱이 v' + esc(rel.version) + '(으)로 업데이트를 안내합니다' : '') + '</p>';
+      (app.inAppUpdate ? ' · 앱에서 최신으로 업데이트' : '') + '</p>';
   }
 
   function downloadButton(app, rel) {
@@ -133,133 +149,215 @@
     return '<button class="btn btn-primary" type="button" disabled>' + ICON_DOWNLOAD + 'APK 준비 중</button>';
   }
 
-  function appHead(app, rel, large) {
+  // ---- routing -------------------------------------------------------------
+
+  function findApp(id) {
+    return state.apps.filter(function (a) { return a.id === id; })[0];
+  }
+
+  function viewExists(id) {
+    return VIEWS.some(function (v) { return v.id === id; });
+  }
+
+  /** `#/<app>/<view>/<step>`; the step is 1-based in the URL. */
+  function hashFor(app, view, index) {
+    if (!view || view === 'about') return '#/' + app.id;
+    return '#/' + app.id + '/' + view + (index ? '/' + (index + 1) : '');
+  }
+
+  function parseHash() {
+    var parts = location.hash.replace(/^#\/?/, '').split('/');
+    return {
+      app: findApp(parts[0]) || state.apps[0],
+      view: viewExists(parts[1]) ? parts[1] : 'about',
+      index: Math.max(0, (parseInt(parts[2], 10) || 1) - 1)
+    };
+  }
+
+  // ---- views ---------------------------------------------------------------
+
+  function tabs() {
+    tabsEl.innerHTML = state.apps.map(function (app, i) {
+      var selected = app === current.app;
+      return '<a class="tab" role="tab" href="' + hashFor(app) + '" data-key="tab-' + esc(app.id) + '"' +
+        ' aria-selected="' + selected + '" style="' + accentStyle(app) + '" title="' + (i + 1) + '. ' + esc(app.name) + '">' +
+        '<span class="tab-num">' + (i + 1) + '</span><span class="tab-name">' + esc(app.name) + '</span></a>';
+    }).join('');
+    fitTabs();
+  }
+
+  /** Inactive tabs collapse to their number when all names do not fit in one row. */
+  function fitTabs() {
+    tabsEl.classList.remove('compact');
+    if (tabsEl.scrollWidth > tabsEl.clientWidth + 1) tabsEl.classList.add('compact');
+    var active = tabsEl.querySelector('[aria-selected="true"]');
+    if (active) {
+      var left = active.offsetLeft - tabsEl.offsetLeft;
+      if (left < tabsEl.scrollLeft) tabsEl.scrollLeft = left;
+      else if (left + active.offsetWidth > tabsEl.scrollLeft + tabsEl.clientWidth) {
+        tabsEl.scrollLeft = left + active.offsetWidth - tabsEl.clientWidth;
+      }
+    }
+  }
+
+  function appHead(app, rel) {
     var meta = [rel.version ? 'v' + rel.version : '버전 준비 중', app.platform || 'Android'].join(' · ');
-    var tag = large ? 'h1' : 'h2';
     return '<div class="app-head">' +
-      '<div class="app-icon' + (large ? ' lg' : '') + '" aria-hidden="true">' + esc(app.icon || app.name.charAt(0)) + '</div>' +
-      '<div class="app-title"><' + tag + '>' + esc(app.name) +
-      (app.edition ? '<span class="edition">' + esc(app.edition) + '</span>' : '') + '</' + tag + '>' +
+      '<div class="app-icon" aria-hidden="true">' + esc(app.icon || app.name.charAt(0)) + '</div>' +
+      '<div class="app-title"><h1>' + esc(app.name) +
+      (app.edition ? '<span class="edition">' + esc(app.edition) + '</span>' : '') + '</h1>' +
       '<p class="app-meta">' + esc(meta) + '</p></div>' +
       (isNew(rel.date) ? '<span class="new-badge">NEW</span>' : '') +
       '</div>';
   }
 
-  function card(app) {
-    var rel = release(app);
-    var features = allFeatures(app);
-    var preview = features.slice(0, 6);
-    var rest = features.length - preview.length;
-    return '<article class="card" style="' + accentStyle(app) + '">' +
-      appHead(app, rel, false) +
+  function segments(app) {
+    return '<nav class="seg" role="tablist" aria-label="' + esc(app.name) + ' 정보">' + VIEWS.map(function (v) {
+      return '<a role="tab" href="' + hashFor(app, v.id) + '" data-key="seg-' + v.id + '" aria-selected="' + (v.id === current.view) + '">' + v.label + '</a>';
+    }).join('') + '</nav>';
+  }
+
+  function aboutView(app, rel) {
+    return '<div class="about">' +
       '<p class="highlight"><span class="pill">핵심</span>' + esc(app.highlight) + '</p>' +
-      '<p class="summary">' + esc(app.summary) + '</p>' +
-      '<ul class="features">' + preview.map(function (f) { return '<li>' + esc(f) + '</li>'; }).join('') + '</ul>' +
-      (rest > 0 ? '<p class="more-features">외 ' + rest + '개 기능</p>' : '') +
-      (app.requirement ? '<p class="requirement">' + esc(app.requirement) + '</p>' : '') +
-      '<div class="card-spacer"></div>' +
+      (app.summary ? '<p class="summary">' + esc(app.summary) + '</p>' : '') +
+      list(coreFeatures(app), 'features core') +
+      '<div class="about-spacer"></div>' +
       '<div class="release-row">' +
       (rel.date ? '<span>' + esc(formatDate(rel.date)) + '</span>' : '') +
       (app.inAppUpdate ? '<span class="chip-ok">앱 안에서 업데이트</span>' : '') +
       '<span class="grow"></span>' +
       (rel.size ? '<span>' + esc(rel.size) + '</span>' : '') +
       '</div>' +
-      '<div class="actions">' +
-      '<a class="btn" href="#/' + esc(app.id) + '">상세 정보 · 사용법</a>' +
-      downloadButton(app, rel) +
-      '</div>' + installerNote(app, rel) +
-      '</article>';
+      (app.requirement ? '<p class="requirement">' + esc(app.requirement) + '</p>' : '') +
+      '</div>';
   }
 
-  function installGuide() {
-    return '<section class="section" aria-labelledby="installTitle">' +
-      '<h2 class="section-title" id="installTitle">APK 설치 방법</h2>' +
-      '<ol class="steps cols">' +
-      '<li><h3>APK 다운로드</h3><p>앱 카드의 APK 다운로드를 누릅니다. 브라우저가 경고하면 다운로드를 계속합니다.</p></li>' +
-      '<li><h3>설치 허용</h3><p>받은 파일을 열고, 처음이면 브라우저나 파일 앱의 \'출처를 알 수 없는 앱 설치\'를 허용합니다.</p></li>' +
-      '<li><h3>설치 후 업데이트</h3><p>앱 안에서 업데이트를 지원하는 앱은 새 버전이 나오면 앱이 알려 줍니다.</p></li>' +
-      '</ol></section>';
+  /** Pages for the paged views. Each page: { mark, label, kicker, title, body, big }. */
+  function pages(app, view) {
+    if (view === 'usage') {
+      var steps = (app.usage || []).map(function (u, i, all) {
+        return {
+          kicker: 'STEP ' + (i + 1) + ' / ' + all.length,
+          title: u.title,
+          body: '<p>' + esc(u.body) + '</p>',
+          big: i + 1
+        };
+      });
+      if ((app.notes || []).length) {
+        steps.push({ mark: '!', label: '알아두세요', kicker: 'NOTE', title: '알아두세요', body: list(app.notes, 'notes') });
+      }
+      return steps;
+    }
+    if (view === 'features') {
+      return (app.featureGroups || []).map(function (g, i, all) {
+        return { kicker: '기능 ' + (i + 1) + ' / ' + all.length, title: g.title, body: list(g.items || [], 'features') };
+      });
+    }
+    if (view === 'history') {
+      var versions = app.historyList || (app.latest ? [app.latest] : []);
+      return versions.map(function (h, i) {
+        var latest = i === 0;
+        return {
+          kicker: [formatDate(h.publishedAt), formatSize(h.size)].filter(Boolean).join(' · ') + (latest ? ' · 최신' : ''),
+          title: 'v' + h.versionName,
+          body: (latest && h.sha256 ? '<div class="verify"><span>SHA-256</span><code>' + esc(h.sha256) + '</code>' +
+              '<button class="copy" type="button" data-copy="' + esc(h.sha256) + '">복사</button></div>' : '') +
+            '<p class="pre">' + esc(h.notes || '변경 내용이 없습니다.') + '</p>' +
+            (!latest && h.apkUrl ? '<p><a class="text-link" href="' + esc(h.apkUrl) + '" download>이 버전 받기</a></p>' : '')
+        };
+      });
+    }
+    return [];
   }
 
-  function home() {
-    var latestDate = state.apps.map(function (a) { return release(a).date || ''; }).sort().pop();
-    var platforms = state.apps.map(function (a) { return a.platform || 'Android'; })
-      .filter(function (p, i, all) { return all.indexOf(p) === i; });
-    root.innerHTML =
-      '<section class="hero">' +
-      '<p class="eyebrow">APPS</p>' +
-      '<h1>앱을 바로<br>다운로드하세요.</h1>' +
-      '<p class="lead">' + esc(state.site.intro || '') + '</p>' +
-      '<ul class="hero-stats">' +
-      '<li>앱 <b>' + state.apps.length + '개</b></li>' +
-      '<li><b>' + esc(platforms.join(' · ')) + '</b></li>' +
-      (latestDate ? '<li>최근 업데이트 <b>' + esc(formatDate(latestDate)) + '</b></li>' : '') +
-      '</ul></section>' +
-      '<section class="grid" aria-label="앱 목록">' + state.apps.map(card).join('') + '</section>' +
-      installGuide();
-    document.title = state.site.title || '앱 다운로드';
-  }
-
-  function historyPanel(app) {
-    var list = app.historyList || (app.latest ? [app.latest] : []);
-    if (!list.length) return '<p class="empty">아직 게시된 버전이 없습니다.</p>';
-    return '<div class="history">' + list.map(function (h, index) {
-      return '<details' + (index === 0 ? ' open' : '') + '>' +
-        '<summary>v' + esc(h.versionName) +
-        (index === 0 ? '<span class="latest">최신</span>' : '') +
-        '<small>' + esc(formatDate(h.publishedAt)) + (h.size ? ' · ' + esc(formatSize(h.size)) : '') + '</small>' +
-        '</summary>' +
-        '<div class="body">' + esc(h.notes || '변경 내용이 없습니다.') +
-        (h.apkUrl && index > 0 ? '\n\n<a href="' + esc(h.apkUrl) + '" download>이 버전 받기</a>' : '') +
-        '</div></details>';
-    }).join('') + '</div>';
-  }
-
-  function detail(app) {
-    var rel = release(app);
-    root.innerHTML =
-      '<div style="' + accentStyle(app) + '">' +
-      '<a class="back" href="#">' + ICON_BACK + '전체 앱</a>' +
-      '<section class="detail-hero">' +
-      appHead(app, rel, true) +
-      '<p class="highlight"><span class="pill">핵심</span>' + esc(app.highlight) + '</p>' +
-      '<p class="summary">' + esc(app.summary) + '</p>' +
-      '<div class="actions">' + downloadButton(app, rel) + '</div>' + installerNote(app, rel) +
-      '<p class="download-note">' + esc([rel.date && formatDate(rel.date), rel.size, app.requirement].filter(Boolean).join(' · ')) + '</p>' +
-      (rel.sha256 ? '<div class="verify"><span>SHA-256</span><code>' + esc(rel.sha256) + '</code>' +
-        '<button class="copy" type="button" data-copy="' + esc(rel.sha256) + '">복사</button></div>' : '') +
+  function pager(items, index, dir) {
+    if (!items.length) return '<p class="empty">아직 내용이 없습니다.</p>';
+    var page = items[index];
+    var last = items.length - 1;
+    var nums = items.length <= 9
+      ? '<div class="nums">' + items.map(function (it, i) {
+        return '<button class="num" type="button" data-step="' + i + '" data-key="num-' + i + '"' +
+          ' aria-label="' + esc(it.label || (i + 1) + '번째') + '"' + (i === index ? ' aria-current="step"' : '') + '>' +
+          esc(it.mark || i + 1) + '</button>';
+      }).join('') + '</div>'
+      : '<p class="count">' + (index + 1) + ' / ' + items.length + '</p>';
+    return '<div class="pager">' +
+      '<section class="slide"' + (dir ? ' data-dir="' + dir + '"' : '') + ' aria-roledescription="slide">' +
+      (page.big ? '<span class="big" aria-hidden="true">' + page.big + '</span>' : '') +
+      '<p class="kicker">' + esc(page.kicker) + '</p>' +
+      '<h2>' + esc(page.title) + '</h2>' +
+      '<div class="slide-body">' + page.body + '</div>' +
       '</section>' +
-      '<div class="detail-grid">' +
-      '<div class="col">' +
-      '<section class="panel order-1"><h2>주요 기능</h2><div class="feature-groups">' +
-      (app.featureGroups || []).map(function (g) {
-        return '<div><h3>' + esc(g.title) + '</h3><ul class="features">' +
-          (g.items || []).map(function (f) { return '<li>' + esc(f) + '</li>'; }).join('') + '</ul></div>';
-      }).join('') +
-      '</div></section>' +
-      '<section class="panel order-4"><h2>업데이트 기록</h2>' + historyPanel(app) + '</section>' +
-      '</div>' +
-      '<div class="col">' +
-      '<section class="panel order-2"><h2>사용법</h2><ol class="steps">' +
-      (app.usage || []).map(function (u) { return '<li><h3>' + esc(u.title) + '</h3><p>' + esc(u.body) + '</p></li>'; }).join('') +
-      '</ol></section>' +
-      ((app.notes || []).length ? '<section class="panel order-3"><h2>알아두세요</h2><ul class="notes">' +
-        app.notes.map(function (n) { return '<li>' + esc(n) + '</li>'; }).join('') + '</ul></section>' : '') +
-      '</div>' +
+      '<div class="pager-nav">' +
+      '<button class="arrow" type="button" data-step="' + (index - 1) + '" data-key="prev" aria-label="이전"' + (index === 0 ? ' disabled' : '') + '>' + ICON_PREV + '</button>' +
+      nums +
+      '<button class="arrow" type="button" data-step="' + (index + 1) + '" data-key="next" aria-label="다음"' + (index === last ? ' disabled' : '') + '>' + ICON_NEXT + '</button>' +
       '</div></div>';
-    document.title = app.name + (app.edition ? ' ' + app.edition : '') + ' · ' + (state.site.title || '앱 다운로드');
   }
 
-  // ---- routing -------------------------------------------------------------
+  function render(dir) {
+    var app = current.app;
+    var rel = release(app);
+    var items = pages(app, current.view);
+    current.index = Math.min(current.index, Math.max(0, items.length - 1));
+    current.count = items.length;
+
+    var focusKey = document.activeElement && document.activeElement.getAttribute('data-key');
+    tabs();
+    root.innerHTML =
+      '<article class="app" style="' + accentStyle(app) + '">' +
+      appHead(app, rel) +
+      segments(app) +
+      '<div class="view">' + (current.view === 'about' ? aboutView(app, rel) : pager(items, current.index, dir)) + '</div>' +
+      '<div class="dock">' + downloadButton(app, rel) + installerNote(app, rel) + '</div>' +
+      '</article>';
+    markOverflow();
+    if (focusKey) {
+      var target = document.querySelector('[data-key="' + focusKey + '"]:not([disabled])');
+      if (target) target.focus({ preventScroll: true });
+    }
+    document.title = app.name + ' · ' + (state.site.title || '앱 다운로드');
+  }
+
+  /** Long text that cannot fit on a phone scrolls inside its card; fade the edge to show there is more. */
+  function markOverflow() {
+    var body = root.querySelector('.slide-body, .about');
+    if (!body) return;
+    var update = function () {
+      body.classList.toggle('more', body.scrollTop + body.clientHeight < body.scrollHeight - 2);
+    };
+    body.addEventListener('scroll', update, { passive: true });
+    update();
+  }
 
   function route() {
-    var id = (location.hash.match(/^#\/([\w-]+)/) || [])[1];
-    var app = id && state.apps.filter(function (a) { return a.id === id; })[0];
-    if (app) detail(app); else home();
-    window.scrollTo(0, 0);
+    var next = parseHash();
+    var dir = next.app === current.app && next.view === current.view && next.index !== current.index
+      ? (next.index > current.index ? 'next' : 'prev') : '';
+    current.app = next.app;
+    current.view = next.view;
+    current.index = next.index;
+    render(dir);
   }
 
+  /** Steps replace the URL instead of adding history entries, so Back leaves the page. */
+  function step(index) {
+    if (current.view === 'about' || index < 0 || index >= current.count || index === current.index) return;
+    var dir = index > current.index ? 'next' : 'prev';
+    current.index = index;
+    history.replaceState(null, '', hashFor(current.app, current.view, index));
+    render(dir);
+  }
+
+  // ---- input ---------------------------------------------------------------
+
   root.addEventListener('click', function (event) {
+    var stepButton = event.target.closest('[data-step]');
+    if (stepButton) {
+      step(parseInt(stepButton.getAttribute('data-step'), 10));
+      return;
+    }
     var button = event.target.closest('[data-copy]');
     if (!button) return;
     var text = button.getAttribute('data-copy');
@@ -267,10 +365,39 @@
     if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, function () {});
   });
 
+  document.addEventListener('keydown', function (event) {
+    if (event.altKey || event.ctrlKey || event.metaKey || !current.app) return;
+    if (/^(INPUT|TEXTAREA|SELECT)$/.test(event.target.tagName)) return;
+    if (/^[1-9]$/.test(event.key)) {
+      var app = state.apps[parseInt(event.key, 10) - 1];
+      if (app) location.hash = hashFor(app);
+    } else if (event.key === 'ArrowLeft') {
+      step(current.index - 1);
+    } else if (event.key === 'ArrowRight') {
+      step(current.index + 1);
+    }
+  });
+
+  var touch = null;
+  root.addEventListener('touchstart', function (event) {
+    var t = event.touches[0];
+    touch = event.touches.length === 1 && event.target.closest('.pager') ? { x: t.clientX, y: t.clientY } : null;
+  }, { passive: true });
+  root.addEventListener('touchend', function (event) {
+    if (!touch) return;
+    var t = event.changedTouches[0];
+    var dx = t.clientX - touch.x;
+    var dy = t.clientY - touch.y;
+    touch = null;
+    if (Math.abs(dx) >= SWIPE_MIN && Math.abs(dx) > Math.abs(dy) * 1.5) step(current.index + (dx < 0 ? 1 : -1));
+  }, { passive: true });
+
   window.addEventListener('hashchange', route);
+  window.addEventListener('resize', function () { if (current.app) fitTabs(); });
 
   load().then(function () {
-    document.getElementById('footerApps').textContent = state.apps.map(function (a) { return a.name; }).join(' · ');
+    if (!state.apps.length) throw new Error('no apps');
+    document.getElementById('footerMaxKey').textContent = Math.min(state.apps.length, 9);
     route();
   }).catch(function () {
     root.innerHTML = '<div class="error-box">앱 목록을 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.</div>';
