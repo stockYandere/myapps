@@ -2,6 +2,18 @@
   {
     "app": "nai-pocket",
     "packageName": "com.example.novelaiaccount.r",
+    "versionCode": 98,
+    "versionName": "0.11.46(R)",
+    "apkUrl": "https://github.com/stockYandere/myapps/releases/download/nai-pocket-v0.11.46R/NAI-Pocket-0.11.46R.apk",
+    "sha256": "60a5e7c00b8ac13f63208ac1e85e0b5b8a56f5b137a093b62a00ee9d9e6654c5",
+    "size": 5152932,
+    "minSdk": 23,
+    "publishedAt": "2026-10-16T05:27:06Z",
+    "notes": "1~4번 화면의 탭 줄도 0번(결과)처럼 화면 폭 전체로 넓힘. 결과 화면 안내에 '따라가기' 설명 추가(켜면 오른쪽 기록을 스크롤할 때 맨 위에 보이는 그림이 크게 표시, 끄면 직접 누른 그림만 표시). 따라가기를 켜고 끌 때도 같은 설명을 잠깐 표시."
+  },
+  {
+    "app": "nai-pocket",
+    "packageName": "com.example.novelaiaccount.r",
     "versionCode": 97,
     "versionName": "0.11.45(R)",
     "apkUrl": "https://github.com/stockYandere/myapps/releases/download/nai-pocket-v0.11.45R/NAI-Pocket-0.11.45R.apk",

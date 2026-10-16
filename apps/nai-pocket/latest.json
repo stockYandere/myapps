@@ -1,12 +1,12 @@
 {
   "app": "nai-pocket",
   "packageName": "com.example.novelaiaccount.r",
-  "versionCode": 97,
-  "versionName": "0.11.45(R)",
-  "apkUrl": "https://github.com/stockYandere/myapps/releases/download/nai-pocket-v0.11.45R/NAI-Pocket-0.11.45R.apk",
-  "sha256": "f5ab34f4d1887bfd8ea717638b6000dc21dd3ef68cd63dc0b3143f89ae4c3bb6",
+  "versionCode": 98,
+  "versionName": "0.11.46(R)",
+  "apkUrl": "https://github.com/stockYandere/myapps/releases/download/nai-pocket-v0.11.46R/NAI-Pocket-0.11.46R.apk",
+  "sha256": "60a5e7c00b8ac13f63208ac1e85e0b5b8a56f5b137a093b62a00ee9d9e6654c5",
   "size": 5152932,
   "minSdk": 23,
-  "publishedAt": "2026-10-16T04:48:04Z",
-  "notes": "결과 화면 정리. '이전 그림' 버튼과 기록 따라가기 체크박스를 그림 위에서 오른쪽 기록 영역 맨 위로 옮김(체크박스는 이름이 보이는 '따라가기' 토글로, 켜지면 밝게 표시). 기록 영역을 접으면 '이전 그림'은 그림 아래 버튼 줄 끝에 나타남. 아래 탭 줄 왼쪽의 계정 문구를 없애고 0~4 탭 버튼을 줄 전체로 넓힘. 기록이 없을 때 빈 칸 4개 대신 첫 칸에만 '기록 없음' 표시."
+  "publishedAt": "2026-10-16T05:27:06Z",
+  "notes": "1~4번 화면의 탭 줄도 0번(결과)처럼 화면 폭 전체로 넓힘. 결과 화면 안내에 '따라가기' 설명 추가(켜면 오른쪽 기록을 스크롤할 때 맨 위에 보이는 그림이 크게 표시, 끄면 직접 누른 그림만 표시). 따라가기를 켜고 끌 때도 같은 설명을 잠깐 표시."
 }
