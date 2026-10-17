@@ -2,6 +2,18 @@
   {
     "app": "nai-pocket",
     "packageName": "com.example.novelaiaccount.r",
+    "versionCode": 101,
+    "versionName": "0.11.49(R)",
+    "apkUrl": "https://github.com/stockYandere/myapps/releases/download/nai-pocket-v0.11.49R/NAI-Pocket-0.11.49R.apk",
+    "sha256": "ac15e98f5464ed9549aca1460503080cc00af9dc6cdf82c69f89a1eaae11da2c",
+    "size": 5181604,
+    "minSdk": 23,
+    "publishedAt": "2026-10-17T01:28:57Z",
+    "notes": "Medium으로 만든 이미지를 불러오면 Medium으로 인식. NovelAI가 이미지 'Source'에 남기는 모델 해시로 판별해 불러오기 화면에 'NovelAI V5 Full · Medium'으로 표시하고, 생성 설정 적용 시 Medium이 켜짐(이미지의 Steps 14·샘플러는 Medium 고정값이라 High용 값은 그대로 유지). High 이미지는 High로 되돌림. 기록에서 다시 쓰기, 여러 장 세트 불러오기, 세트 → 메인 적용에도 같은 값 반영. V5 Curated 이미지가 V5 Full로 잘못 읽히던 문제도 같은 방법으로 수정."
+  },
+  {
+    "app": "nai-pocket",
+    "packageName": "com.example.novelaiaccount.r",
     "versionCode": 100,
     "versionName": "0.11.48(R)",
     "apkUrl": "https://github.com/stockYandere/myapps/releases/download/nai-pocket-v0.11.48R/NAI-Pocket-0.11.48R.apk",
