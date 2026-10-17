@@ -1,12 +1,12 @@
 {
   "app": "nai-pocket",
   "packageName": "com.example.novelaiaccount.r",
-  "versionCode": 99,
-  "versionName": "0.11.47(R)",
-  "apkUrl": "https://github.com/stockYandere/myapps/releases/download/nai-pocket-v0.11.47R/NAI-Pocket-0.11.47R.apk",
-  "sha256": "97d1d9d27aa625f60edd697b5fa522c796c4e39d85a0a6d085cf9f29b944ff92",
-  "size": 5152932,
+  "versionCode": 100,
+  "versionName": "0.11.48(R)",
+  "apkUrl": "https://github.com/stockYandere/myapps/releases/download/nai-pocket-v0.11.48R/NAI-Pocket-0.11.48R.apk",
+  "sha256": "214b0a69dfef8d77159a8c991d820990f774f12cf1860f59ba5fc89b79b0c3e4",
+  "size": 5181604,
   "minSdk": 23,
-  "publishedAt": "2026-10-16T05:51:22Z",
-  "notes": "0~4번 모든 화면의 탭 버튼을 다시 오른쪽에 작게 모음(엄지 가까이, 다섯 화면 모두 같은 위치)."
+  "publishedAt": "2026-10-17T01:12:06Z",
+  "notes": "NovelAI V5 Full의 새 Medium 효과 지원. 3번(생성 설정)에서 모델이 V5 Full일 때 High / Medium 선택. Medium은 약 40% 저렴한 별도 모델(nai-diffusion-5-full-medium)로 생성하며, NovelAI 규칙대로 Steps 14·Euler Ancestral·부정 프롬프트(NovelAI Heavy 기본값)가 고정됨. 선택은 저장되고 자동생성·세트·가사 시퀀스에도 적용. 예상 Anlas 계산을 NovelAI 공식 계산식으로 바꿔 Medium 가격도 정확히 표시(832×1216 기준 High 23스텝 26, Medium 17)."
 }
