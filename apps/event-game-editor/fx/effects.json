@@ -112,55 +112,121 @@
   "items": [
    {
     "name": "비",
-    "file": "weather-rain.webp"
+    "file": "weather-rain.webp",
+    "sound": {
+     "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/rain.ogg",
+     "name": "비",
+     "loop": true
+    }
    },
    {
     "name": "폭풍우 (번개)",
-    "file": "weather-storm.webp"
+    "file": "weather-storm.webp",
+    "sound": {
+     "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/storm.ogg",
+     "name": "거센 비 · 천둥",
+     "loop": true,
+     "also": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/thunder.ogg"
+    }
    },
    {
     "name": "눈",
-    "file": "weather-snow.webp"
+    "file": "weather-snow.webp",
+    "sound": {
+     "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/wind-winter.ogg",
+     "name": "겨울바람",
+     "loop": true
+    }
    },
    {
     "name": "안개",
-    "file": "weather-fog.webp"
+    "file": "weather-fog.webp",
+    "sound": {
+     "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/wind-eerie.ogg",
+     "name": "으스스한 바람",
+     "loop": true
+    }
    },
    {
     "name": "먼지",
-    "file": "weather-dust.webp"
+    "file": "weather-dust.webp",
+    "sound": {
+     "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/wind.ogg",
+     "name": "바람",
+     "loop": true
+    }
    },
    {
     "name": "불씨",
-    "file": "weather-embers.webp"
+    "file": "weather-embers.webp",
+    "sound": {
+     "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/fire.ogg",
+     "name": "모닥불",
+     "loop": true
+    }
    },
    {
     "name": "꽃잎",
-    "file": "weather-petals.webp"
+    "file": "weather-petals.webp",
+    "sound": {
+     "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/birds.ogg",
+     "name": "새소리",
+     "loop": true
+    }
    },
    {
     "name": "낙엽",
-    "file": "weather-leaves.webp"
+    "file": "weather-leaves.webp",
+    "sound": {
+     "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/leaves.ogg",
+     "name": "나뭇잎 바람",
+     "loop": true
+    }
    },
    {
     "name": "반딧불",
-    "file": "weather-fireflies.webp"
+    "file": "weather-fireflies.webp",
+    "sound": {
+     "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/crickets.ogg",
+     "name": "풀벌레",
+     "loop": true
+    }
    },
    {
     "name": "반짝이는 별",
-    "file": "weather-stars.webp"
+    "file": "weather-stars.webp",
+    "sound": {
+     "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/night.ogg",
+     "name": "고요한 밤",
+     "loop": true
+    }
    },
    {
     "name": "물방울",
-    "file": "weather-bubbles.webp"
+    "file": "weather-bubbles.webp",
+    "sound": {
+     "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/underwater.ogg",
+     "name": "물속",
+     "loop": true
+    }
    },
    {
     "name": "재",
-    "file": "weather-ash.webp"
+    "file": "weather-ash.webp",
+    "sound": {
+     "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/wind-dark.ogg",
+     "name": "쓸쓸한 바람",
+     "loop": true
+    }
    },
    {
     "name": "반짝임",
-    "file": "weather-sparkles.webp"
+    "file": "weather-sparkles.webp",
+    "sound": {
+     "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/sparkle.ogg",
+     "name": "반짝",
+     "loop": false
+    }
    }
   ]
  },
@@ -249,19 +315,39 @@
    },
    {
     "name": "왼쪽으로 닦기",
-    "file": "transition-wipeLeft.webp"
+    "file": "transition-wipeLeft.webp",
+    "sound": {
+     "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/swoosh.ogg",
+     "name": "스윽",
+     "loop": false
+    }
    },
    {
     "name": "오른쪽으로 닦기",
-    "file": "transition-wipeRight.webp"
+    "file": "transition-wipeRight.webp",
+    "sound": {
+     "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/swoosh.ogg",
+     "name": "스윽",
+     "loop": false
+    }
    },
    {
     "name": "아래로 닦기",
-    "file": "transition-wipeDown.webp"
+    "file": "transition-wipeDown.webp",
+    "sound": {
+     "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/swoosh.ogg",
+     "name": "스윽",
+     "loop": false
+    }
    },
    {
     "name": "위로 닦기",
-    "file": "transition-wipeUp.webp"
+    "file": "transition-wipeUp.webp",
+    "sound": {
+     "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/swoosh.ogg",
+     "name": "스윽",
+     "loop": false
+    }
    },
    {
     "name": "동그랗게 열기",
@@ -269,19 +355,39 @@
    },
    {
     "name": "블라인드",
-    "file": "transition-blinds.webp"
+    "file": "transition-blinds.webp",
+    "sound": {
+     "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/cloth.ogg",
+     "name": "옷깃 스침",
+     "loop": false
+    }
    },
    {
     "name": "밀어 넣기",
-    "file": "transition-slide.webp"
+    "file": "transition-slide.webp",
+    "sound": {
+     "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/whoosh.ogg",
+     "name": "휙",
+     "loop": false
+    }
    },
    {
     "name": "확대하며 등장",
-    "file": "transition-zoom.webp"
+    "file": "transition-zoom.webp",
+    "sound": {
+     "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/whoosh.ogg",
+     "name": "휙",
+     "loop": false
+    }
    },
    {
     "name": "지직거림",
-    "file": "transition-glitch.webp"
+    "file": "transition-glitch.webp",
+    "sound": {
+     "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/glitch.ogg",
+     "name": "지직",
+     "loop": false
+    }
    },
    {
     "name": "흐릿하게 번지기",
@@ -289,7 +395,12 @@
    },
    {
     "name": "번쩍 전환",
-    "file": "transition-flashCut.webp"
+    "file": "transition-flashCut.webp",
+    "sound": {
+     "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/shutter.ogg",
+     "name": "카메라 셔터",
+     "loop": false
+    }
    }
   ]
  },
@@ -300,51 +411,111 @@
   "items": [
    {
     "name": "번쩍",
-    "file": "beat-flash.webp"
+    "file": "beat-flash.webp",
+    "sound": {
+     "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/flash.ogg",
+     "name": "번쩍 (플래시)",
+     "loop": false
+    }
    },
    {
     "name": "하얗게 번쩍",
-    "file": "beat-whiteFlash.webp"
+    "file": "beat-whiteFlash.webp",
+    "sound": {
+     "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/shine.ogg",
+     "name": "빛남",
+     "loop": false
+    }
    },
    {
     "name": "붉게 번쩍",
-    "file": "beat-redFlash.webp"
+    "file": "beat-redFlash.webp",
+    "sound": {
+     "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/hit.ogg",
+     "name": "충격",
+     "loop": false
+    }
    },
    {
     "name": "암전",
-    "file": "beat-blackout.webp"
+    "file": "beat-blackout.webp",
+    "sound": {
+     "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/boom-low.ogg",
+     "name": "둔탁한 울림",
+     "loop": false
+    }
    },
    {
     "name": "흔들림",
-    "file": "beat-shake.webp"
+    "file": "beat-shake.webp",
+    "sound": {
+     "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/thud.ogg",
+     "name": "쿵",
+     "loop": false
+    }
    },
    {
     "name": "크게 흔들림",
-    "file": "beat-bigShake.webp"
+    "file": "beat-bigShake.webp",
+    "sound": {
+     "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/quake.ogg",
+     "name": "땅울림",
+     "loop": false
+    }
    },
    {
     "name": "두근",
-    "file": "beat-pulse.webp"
+    "file": "beat-pulse.webp",
+    "sound": {
+     "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/heartbeat.ogg",
+     "name": "두근",
+     "loop": false
+    }
    },
    {
     "name": "지직",
-    "file": "beat-glitch.webp"
+    "file": "beat-glitch.webp",
+    "sound": {
+     "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/glitch.ogg",
+     "name": "지직",
+     "loop": false
+    }
    },
    {
     "name": "확 다가감",
-    "file": "beat-zoomPunch.webp"
+    "file": "beat-zoomPunch.webp",
+    "sound": {
+     "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/impact.ogg",
+     "name": "쾅",
+     "loop": false
+    }
    },
    {
     "name": "번개",
-    "file": "beat-lightning.webp"
+    "file": "beat-lightning.webp",
+    "sound": {
+     "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/thunder.ogg",
+     "name": "천둥",
+     "loop": false
+    }
    },
    {
     "name": "흐려졌다 돌아옴",
-    "file": "beat-blur.webp"
+    "file": "beat-blur.webp",
+    "sound": {
+     "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/whoosh.ogg",
+     "name": "휙",
+     "loop": false
+    }
    },
    {
     "name": "차갑게 물듦",
-    "file": "beat-tint.webp"
+    "file": "beat-tint.webp",
+    "sound": {
+     "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/freeze.ogg",
+     "name": "얼어붙음",
+     "loop": false
+    }
    }
   ]
  },
@@ -359,23 +530,48 @@
    },
    {
     "name": "등장 · 왼쪽에서",
-    "file": "character-enter-slideLeft.webp"
+    "file": "character-enter-slideLeft.webp",
+    "sound": {
+     "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/cloth.ogg",
+     "name": "옷깃 스침",
+     "loop": false
+    }
    },
    {
     "name": "등장 · 오른쪽에서",
-    "file": "character-enter-slideRight.webp"
+    "file": "character-enter-slideRight.webp",
+    "sound": {
+     "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/cloth.ogg",
+     "name": "옷깃 스침",
+     "loop": false
+    }
    },
    {
     "name": "등장 · 아래에서",
-    "file": "character-enter-rise.webp"
+    "file": "character-enter-rise.webp",
+    "sound": {
+     "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/cloth.ogg",
+     "name": "옷깃 스침",
+     "loop": false
+    }
    },
    {
     "name": "등장 · 톡 튀어나옴",
-    "file": "character-enter-pop.webp"
+    "file": "character-enter-pop.webp",
+    "sound": {
+     "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/pop.ogg",
+     "name": "톡",
+     "loop": false
+    }
    },
    {
     "name": "등장 · 위에서",
-    "file": "character-enter-drop.webp"
+    "file": "character-enter-drop.webp",
+    "sound": {
+     "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/thud.ogg",
+     "name": "쿵",
+     "loop": false
+    }
    },
    {
     "name": "움직임 · 숨쉬기",

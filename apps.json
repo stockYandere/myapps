@@ -203,6 +203,7 @@
       ],
       "manifest": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/release/update.json",
       "effects": "apps/event-game-editor/fx/effects.json",
+      "sounds": "apps/event-game-editor/sounds.json",
       "inAppUpdate": true,
       "featureGroups": [
         {

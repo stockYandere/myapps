@@ -1,0 +1,545 @@
+[
+ {
+  "id": "effect",
+  "title": "효과음",
+  "items": [
+   {
+    "name": "천둥",
+    "duration": 7.9,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/thunder.ogg",
+    "credit": ""
+   },
+   {
+    "name": "먼 천둥",
+    "duration": 10.0,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/thunder-far.ogg",
+    "credit": ""
+   },
+   {
+    "name": "번쩍 (플래시)",
+    "duration": 1.7,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/flash.ogg",
+    "credit": ""
+   },
+   {
+    "name": "카메라 셔터",
+    "duration": 0.3,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/shutter.ogg",
+    "credit": ""
+   },
+   {
+    "name": "빛남",
+    "duration": 1.8,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/shine.ogg",
+    "credit": ""
+   },
+   {
+    "name": "반짝",
+    "duration": 0.5,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/sparkle.ogg",
+    "credit": ""
+   },
+   {
+    "name": "마법",
+    "duration": 1.3,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/magic.ogg",
+    "credit": ""
+   },
+   {
+    "name": "얼어붙음",
+    "duration": 3.2,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/freeze.ogg",
+    "credit": ""
+   },
+   {
+    "name": "충격",
+    "duration": 4.5,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/hit.ogg",
+    "credit": ""
+   },
+   {
+    "name": "쾅",
+    "duration": 4.4,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/impact.ogg",
+    "credit": ""
+   },
+   {
+    "name": "굉음",
+    "duration": 4.5,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/boom.ogg",
+    "credit": ""
+   },
+   {
+    "name": "둔탁한 울림",
+    "duration": 4.0,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/boom-low.ogg",
+    "credit": ""
+   },
+   {
+    "name": "땅울림",
+    "duration": 6.0,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/quake.ogg",
+    "credit": ""
+   },
+   {
+    "name": "쿵",
+    "duration": 0.4,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/thud.ogg",
+    "credit": ""
+   },
+   {
+    "name": "쓰러짐",
+    "duration": 1.5,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/fall.ogg",
+    "credit": ""
+   },
+   {
+    "name": "두근",
+    "duration": 1.4,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/heartbeat.ogg",
+    "credit": ""
+   },
+   {
+    "name": "지직",
+    "duration": 2.0,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/glitch.ogg",
+    "credit": ""
+   },
+   {
+    "name": "휙",
+    "duration": 0.4,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/whoosh.ogg",
+    "credit": ""
+   },
+   {
+    "name": "스윽",
+    "duration": 0.2,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/swoosh.ogg",
+    "credit": ""
+   },
+   {
+    "name": "주먹",
+    "duration": 1.2,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/punch.ogg",
+    "credit": ""
+   },
+   {
+    "name": "칼 뽑기",
+    "duration": 2.3,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/sword.ogg",
+    "credit": ""
+   },
+   {
+    "name": "유리 깨짐",
+    "duration": 0.2,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/glass.ogg",
+    "credit": ""
+   },
+   {
+    "name": "폭발",
+    "duration": 2.0,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/explosion.ogg",
+    "credit": ""
+   },
+   {
+    "name": "노크",
+    "duration": 0.6,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/knock.ogg",
+    "credit": ""
+   },
+   {
+    "name": "삐걱",
+    "duration": 0.9,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/creak.ogg",
+    "credit": ""
+   },
+   {
+    "name": "문 열림",
+    "duration": 0.9,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/door-open.ogg",
+    "credit": ""
+   },
+   {
+    "name": "문 닫힘",
+    "duration": 0.7,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/door-close.ogg",
+    "credit": ""
+   },
+   {
+    "name": "걷는 발소리",
+    "duration": 2.7,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/footsteps.ogg",
+    "credit": ""
+   },
+   {
+    "name": "뛰는 발소리",
+    "duration": 4.3,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/run.ogg",
+    "credit": ""
+   },
+   {
+    "name": "종소리",
+    "duration": 4.3,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/bell.ogg",
+    "credit": ""
+   },
+   {
+    "name": "전화벨",
+    "duration": 5.4,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/phone.ogg",
+    "credit": ""
+   },
+   {
+    "name": "타자기",
+    "duration": 4.0,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/typewriter.ogg",
+    "credit": ""
+   },
+   {
+    "name": "책장 넘김",
+    "duration": 1.6,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/page.ogg",
+    "credit": ""
+   },
+   {
+    "name": "동전",
+    "duration": 0.8,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/coins.ogg",
+    "credit": ""
+   },
+   {
+    "name": "옷깃 스침",
+    "duration": 0.6,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/cloth.ogg",
+    "credit": ""
+   },
+   {
+    "name": "톡",
+    "duration": 0.1,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/pop.ogg",
+    "credit": ""
+   },
+   {
+    "name": "띵",
+    "duration": 0.3,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/ding.ogg",
+    "credit": ""
+   },
+   {
+    "name": "개 짖음",
+    "duration": 1.6,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/dog.ogg",
+    "credit": ""
+   },
+   {
+    "name": "고양이",
+    "duration": 1.6,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/cat.ogg",
+    "credit": ""
+   },
+   {
+    "name": "헉 (놀람)",
+    "duration": 1.5,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/gasp.ogg",
+    "credit": ""
+   },
+   {
+    "name": "박수",
+    "duration": 6.6,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/applause.ogg",
+    "credit": ""
+   },
+   {
+    "name": "레코드 긁힘",
+    "duration": 1.4,
+    "loop": false,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/scratch.ogg",
+    "credit": ""
+   }
+  ]
+ },
+ {
+  "id": "ambient",
+  "title": "환경음",
+  "items": [
+   {
+    "name": "비",
+    "duration": 30.0,
+    "loop": true,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/rain.ogg",
+    "credit": ""
+   },
+   {
+    "name": "거센 비",
+    "duration": 30.0,
+    "loop": true,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/storm.ogg",
+    "credit": ""
+   },
+   {
+    "name": "창밖 빗소리",
+    "duration": 30.0,
+    "loop": true,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/rain-indoor.ogg",
+    "credit": ""
+   },
+   {
+    "name": "바람",
+    "duration": 30.0,
+    "loop": true,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/wind.ogg",
+    "credit": ""
+   },
+   {
+    "name": "거센 바람",
+    "duration": 26.0,
+    "loop": true,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/wind-strong.ogg",
+    "credit": ""
+   },
+   {
+    "name": "겨울바람",
+    "duration": 30.0,
+    "loop": true,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/wind-winter.ogg",
+    "credit": ""
+   },
+   {
+    "name": "으스스한 바람",
+    "duration": 30.0,
+    "loop": true,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/wind-eerie.ogg",
+    "credit": ""
+   },
+   {
+    "name": "쓸쓸한 바람",
+    "duration": 30.0,
+    "loop": true,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/wind-dark.ogg",
+    "credit": ""
+   },
+   {
+    "name": "모닥불",
+    "duration": 24.0,
+    "loop": true,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/fire.ogg",
+    "credit": ""
+   },
+   {
+    "name": "풀벌레",
+    "duration": 30.0,
+    "loop": true,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/crickets.ogg",
+    "credit": ""
+   },
+   {
+    "name": "고요한 밤",
+    "duration": 17.0,
+    "loop": true,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/night.ogg",
+    "credit": ""
+   },
+   {
+    "name": "새소리",
+    "duration": 30.0,
+    "loop": true,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/birds.ogg",
+    "credit": ""
+   },
+   {
+    "name": "나뭇잎 바람",
+    "duration": 30.0,
+    "loop": true,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/leaves.ogg",
+    "credit": ""
+   },
+   {
+    "name": "물속",
+    "duration": 30.0,
+    "loop": true,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/underwater.ogg",
+    "credit": ""
+   },
+   {
+    "name": "파도",
+    "duration": 30.0,
+    "loop": true,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/waves.ogg",
+    "credit": ""
+   },
+   {
+    "name": "시냇물",
+    "duration": 30.0,
+    "loop": true,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/stream.ogg",
+    "credit": ""
+   },
+   {
+    "name": "도시 거리",
+    "duration": 30.0,
+    "loop": true,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/city.ogg",
+    "credit": ""
+   },
+   {
+    "name": "카페 웅성거림",
+    "duration": 30.0,
+    "loop": true,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/cafe.ogg",
+    "credit": ""
+   },
+   {
+    "name": "시계 째깍",
+    "duration": 12.0,
+    "loop": true,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/clock.ogg",
+    "credit": ""
+   },
+   {
+    "name": "두근거림 (반복)",
+    "duration": 7.2,
+    "loop": true,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/assets/sounds/heartbeat-loop.ogg",
+    "credit": ""
+   }
+  ]
+ },
+ {
+  "id": "bgm",
+  "title": "배경음악",
+  "items": [
+   {
+    "name": "밝은 일상 · Easy Lemon",
+    "duration": 126.4,
+    "loop": true,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/sound-library/bgm-easy-lemon.ogg",
+    "credit": "Easy Lemon · Kevin MacLeod (incompetech.com) · CC BY 4.0"
+   },
+   {
+    "name": "평화로운 아침 · Morning",
+    "duration": 153.3,
+    "loop": true,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/sound-library/bgm-morning.ogg",
+    "credit": "Morning · Kevin MacLeod (incompetech.com) · CC BY 4.0"
+   },
+   {
+    "name": "코믹 · Fluffing a Duck",
+    "duration": 67.4,
+    "loop": true,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/sound-library/bgm-fluffing-a-duck.ogg",
+    "credit": "Fluffing a Duck · Kevin MacLeod (incompetech.com) · CC BY 4.0"
+   },
+   {
+    "name": "수상한 기척 · Investigations",
+    "duration": 93.5,
+    "loop": true,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/sound-library/bgm-investigations.ogg",
+    "credit": "Investigations · Kevin MacLeod (incompetech.com) · CC BY 4.0"
+   },
+   {
+    "name": "회상·꿈 · Dreamy Flashback",
+    "duration": 126.6,
+    "loop": true,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/sound-library/bgm-dreamy-flashback.ogg",
+    "credit": "Dreamy Flashback · Kevin MacLeod (incompetech.com) · CC BY 4.0"
+   },
+   {
+    "name": "슬픔 · Heartbreaking",
+    "duration": 96.0,
+    "loop": true,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/sound-library/bgm-heartbreaking.ogg",
+    "credit": "Heartbreaking · Kevin MacLeod (incompetech.com) · CC BY 4.0"
+   },
+   {
+    "name": "잔잔한 여운 · Peaceful Desolation",
+    "duration": 91.2,
+    "loop": true,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/sound-library/bgm-peaceful-desolation.ogg",
+    "credit": "Peaceful Desolation · Kevin MacLeod (incompetech.com) · CC BY 4.0"
+   },
+   {
+    "name": "미스터리 · Comfortable Mystery 4",
+    "duration": 75.8,
+    "loop": true,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/sound-library/bgm-comfortable-mystery.ogg",
+    "credit": "Comfortable Mystery 4 · Kevin MacLeod (incompetech.com) · CC BY 4.0"
+   },
+   {
+    "name": "긴장 · Crypto",
+    "duration": 204.1,
+    "loop": true,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/sound-library/bgm-crypto.ogg",
+    "credit": "Crypto · Kevin MacLeod (incompetech.com) · CC BY 4.0"
+   },
+   {
+    "name": "공포 · Darkest Child",
+    "duration": 238.7,
+    "loop": true,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/sound-library/bgm-darkest-child.ogg",
+    "credit": "Darkest Child · Kevin MacLeod (incompetech.com) · CC BY 4.0"
+   },
+   {
+    "name": "추격·액션 · Movement Proposition",
+    "duration": 141.0,
+    "loop": true,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/sound-library/bgm-movement-proposition.ogg",
+    "credit": "Movement Proposition · Kevin MacLeod (incompetech.com) · CC BY 4.0"
+   },
+   {
+    "name": "신비·판타지 · Floating Cities",
+    "duration": 184.1,
+    "loop": true,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/sound-library/bgm-floating-cities.ogg",
+    "credit": "Floating Cities · Kevin MacLeod (incompetech.com) · CC BY 4.0"
+   },
+   {
+    "name": "결전·엔딩 · Heroic Age",
+    "duration": 97.5,
+    "loop": true,
+    "src": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/sound-library/bgm-heroic-age.ogg",
+    "credit": "Heroic Age · Kevin MacLeod (incompetech.com) · CC BY 4.0"
+   }
+  ]
+ }
+]

@@ -109,6 +109,9 @@
             app.effectsList = list;
           }, function () {}));
         }
+        if (app.sounds) {
+          jobs.push(fetchJson(app.sounds).then(function (list) { app.soundList = list; }, function () {}));
+        }
         return Promise.all(jobs);
       }));
     });
@@ -269,7 +272,7 @@
         return { kicker: '기능 ' + (i + 1) + ' / ' + all.length, title: g.title, body: list(g.items || [], 'features') };
       });
     }
-    if (view === 'effects') return effectPages(app);
+    if (view === 'effects') return current.fxMode === 'sounds' && app.soundList ? soundPages(app) : effectPages(app);
     if (view === 'history') {
       var versions = app.historyList || (app.latest ? [app.latest] : []);
       return versions.map(function (h, i) {
@@ -307,31 +310,147 @@
     return out;
   }
 
+  // ---- sounds: every effect's sound and the editor's built-in sound list play right away (no animation to wait for) --
+
+  /** Rows per page in the sound list, so a page never scrolls. */
+  function soundsPerPage() {
+    return current.soundPer || Math.max(3, Math.floor((window.innerHeight - 470) / 52));
+  }
+
+  /** After drawing the sound list, use as many rows as its free height holds (once per screen size), staying in the same group. */
+  function fitSoundRows() {
+    var list = root.querySelector('.snd-list');
+    if (!list) return;
+    var row = list.querySelector('.snd-row');
+    var fit = Math.max(2, Math.floor((list.clientHeight + 6) / ((row ? row.offsetHeight : 46) + 6)));
+    if (fit === soundsPerPage()) return;
+    var cat = current.fxCat;
+    current.soundPer = fit;
+    var items = soundPages(current.app);
+    current.index = Math.max(0, items.findIndex(function (it) { return it.catIndex === cat; }));
+    history.replaceState(null, '', hashFor(current.app, current.view, current.index));
+    render();
+  }
+
+  function soundPages(app) {
+    var per = soundsPerPage();
+    var out = [];
+    (app.soundList || []).forEach(function (group, c) {
+      var total = Math.ceil(group.items.length / per);
+      for (var i = 0; i < total; i++) {
+        out.push({ cat: group, catIndex: c, page: i, pages: total, items: group.items.slice(i * per, i * per + per), first: i * per });
+      }
+    });
+    return out;
+  }
+
+  var SOUND_DESC = {
+    effect: '짧은 효과음입니다. 무료(CC0)라 크레딧이 필요 없습니다. 에디터 소리 탭 → 기본 소리에서 고릅니다.',
+    ambient: '끊김 없이 반복되는 배경 소리입니다. 날씨 연출에도 기본으로 쓰입니다. 무료(CC0).',
+    bgm: 'Kevin MacLeod의 곡(CC BY 4.0)입니다. 게임에 넣으면 크레딧 화면에 자동으로 표시됩니다.'
+  };
+  var ICON_SOUND = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11"/></svg>';
+
+  function soundLength(sec) {
+    return sec >= 60 ? Math.floor(sec / 60) + ':' + ('0' + Math.round(sec % 60)).slice(-2) : sec.toFixed(1) + '초';
+  }
+
+  /** Attributes that make a button play a sound (handled once, for the page and the large view). */
+  function soundAttrs(sound) {
+    return ' data-sound="' + esc(sound.src) + '"' + (sound.loop ? ' data-loop="1"' : '') + (sound.also ? ' data-also="' + esc(sound.also) + '"' : '') + ' aria-pressed="false"';
+  }
+
+  var player = null;
+  var playingSrc = '';
+  var soundTimers = [];
+
+  function stopSound() {
+    if (player) {
+      player.pause();
+      player.removeAttribute('src');
+      player.load();
+      player = null;
+    }
+    soundTimers.forEach(clearTimeout);
+    soundTimers = [];
+    playingSrc = '';
+    markSound();
+  }
+
+  /** One sound at a time; pressing the playing one stops it. Loops stop by themselves after 30 seconds. */
+  function playSound(button) {
+    var src = button.getAttribute('data-sound');
+    if (playingSrc === src) { stopSound(); return; }
+    stopSound();
+    player = new Audio(src);
+    player.loop = button.getAttribute('data-loop') === '1';
+    playingSrc = src;
+    var also = button.getAttribute('data-also');
+    if (also) soundTimers.push(setTimeout(function () { new Audio(also).play().catch(function () {}); }, 1200));
+    if (player.loop) soundTimers.push(setTimeout(stopSound, 30000));
+    player.onended = stopSound;
+    player.onerror = stopSound;
+    player.play().catch(stopSound);
+    markSound();
+  }
+
+  function markSound() {
+    document.querySelectorAll('[data-sound]').forEach(function (b) {
+      var on = b.getAttribute('data-sound') === playingSrc;
+      b.classList.toggle('playing', on);
+      b.setAttribute('aria-pressed', on);
+    });
+  }
+
+  // Capture phase: a sound button inside a card plays the sound instead of opening the card.
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest('[data-sound]');
+    if (!button) return;
+    event.preventDefault();
+    event.stopPropagation();
+    playSound(button);
+  }, true);
+
+  function soundList(page) {
+    return '<div class="snd-list">' + page.items.map(function (it) {
+      var meta = [soundLength(it.duration), it.loop ? '반복' : '', it.credit].filter(Boolean).join(' · ');
+      return '<button class="snd-row" type="button"' + soundAttrs(it) + ' aria-label="' + esc(it.name) + ' 듣기">' +
+        '<span class="snd-play" aria-hidden="true"></span><span class="snd-text"><b>' + esc(it.name) + '</b><small>' + esc(meta) + '</small></span></button>';
+    }).join('') + '</div>';
+  }
+
   function effectsView(app, items, index, dir) {
     if (!items.length) return '<p class="empty">아직 내용이 없습니다.</p>';
+    var sounds = current.fxMode === 'sounds' && app.soundList;
     var page = items[index];
     var start = index - page.page;
-    var cats = (app.effectsList || []).map(function (cat, c) {
+    var total = (app.soundList || []).reduce(function (n, g) { return n + g.items.length; }, 0);
+    var mode = app.soundList ? '<div class="fx-mode" role="tablist" aria-label="보기">' +
+      '<button type="button" role="tab" data-fx-mode="effects" aria-selected="' + !sounds + '">연출 예시</button>' +
+      '<button type="button" role="tab" data-fx-mode="sounds" aria-selected="' + !!sounds + '">' + ICON_SOUND + '기본 소리 ' + total + '</button></div>' : '';
+    var cats = (sounds ? app.soundList : app.effectsList || []).map(function (cat, c) {
       var at = 0;
       for (var i = 0; i < items.length; i++) if (items[i].catIndex === c) { at = i; break; }
       return '<button class="fx-cat" type="button" data-step="' + at + '" data-key="cat-' + esc(cat.id) + '"' +
         (c === page.catIndex ? ' aria-current="true"' : '') + '>' + esc(cat.title) + '</button>';
     }).join('');
-    var cards = page.items.map(function (it, i) {
-      return '<button class="fx-card" type="button" data-zoom="' + page.catIndex + ':' + (page.first + i) + '" aria-label="' + esc(it.name) + ' 크게 보기">' +
+    var cards = sounds ? '' : page.items.map(function (it, i) {
+      return '<div class="fx-card-wrap"><button class="fx-card" type="button" data-zoom="' + page.catIndex + ':' + (page.first + i) + '" aria-label="' + esc(it.name) + ' 크게 보기">' +
         '<img src="' + esc(it.src) + '" alt="" loading="lazy" decoding="async" width="240" height="240">' +
-        '<span>' + esc(it.name) + '</span></button>';
+        '<span>' + esc(it.name) + '</span></button>' +
+        (it.sound ? '<button class="fx-sound" type="button"' + soundAttrs(it.sound) + ' aria-label="소리 듣기: ' + esc(it.sound.name) + '" title="' + esc(it.sound.name) + '">' + ICON_SOUND + '</button>' : '') + '</div>';
     }).join('');
-    var nums = '<div class="nums">' + Array.from({ length: page.pages }, function (_, i) {
+    var nums = page.pages > 6 ? '<p class="count">' + (page.page + 1) + ' / ' + page.pages + '</p>' : '<div class="nums">' + Array.from({ length: page.pages }, function (_, i) {
       return '<button class="num" type="button" data-step="' + (start + i) + '" data-key="num-' + i + '" aria-label="' + esc(page.cat.title) + ' ' + (i + 1) + '쪽"' +
         (i === page.page ? ' aria-current="step"' : '') + '>' + (i + 1) + '</button>';
     }).join('') + '</div>';
     return '<div class="pager fx-pager">' +
-      '<div class="fx-cats" role="tablist" aria-label="연출 종류">' + cats + '</div>' +
+      mode +
+      '<div class="fx-cats' + (sounds ? ' fx-cats-3' : '') + '" role="tablist" aria-label="' + (sounds ? '소리 종류' : '연출 종류') + '">' + cats + '</div>' +
       '<section class="slide fx-slide"' + (dir ? ' data-dir="' + dir + '"' : '') + ' aria-roledescription="slide">' +
       '<p class="kicker">' + esc(page.cat.title) + ' · ' + page.cat.items.length + '가지</p>' +
-      '<p class="fx-desc">' + esc(page.cat.desc) + '</p>' +
-      '<div class="fx-grid" style="--fx-rows:' + Math.ceil(effectsPerPage() / 2) + '">' + cards + '</div>' +
+      '<p class="fx-desc">' + esc(sounds ? SOUND_DESC[page.cat.id] || '' : page.cat.desc) + '</p>' +
+      (sounds ? soundList(page) : '<div class="fx-grid" style="--fx-rows:' + Math.ceil(effectsPerPage() / 2) + '">' + cards + '</div>') +
       '</section>' +
       '<div class="pager-nav">' +
       '<button class="arrow" type="button" data-step="' + (index - 1) + '" data-key="prev" aria-label="이전"' + (index === 0 ? ' disabled' : '') + '>' + ICON_PREV + '</button>' +
@@ -358,6 +477,7 @@
         if (event.target === zoomEl || event.target.closest('[data-zoom-close]')) zoomEl.close();
       });
       zoomEl.addEventListener('close', function () {
+        stopSound();
         if (history.state && history.state.zoom) history.back();
       });
       var zx = null;
@@ -378,9 +498,11 @@
       '<button class="arrow" type="button" data-zoom-close aria-label="닫기"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>' +
       '<img src="' + esc(it.src) + '" alt="' + esc(it.name) + '">' +
       '<h2>' + esc(it.name) + '</h2>' +
+      (it.sound ? '<button class="btn fx-zoom-sound" type="button"' + soundAttrs(it.sound) + '>' + ICON_SOUND + '<span>소리 듣기 · ' + esc(it.sound.name) + '</span></button>' : '') +
       '<div class="pager-nav"><button class="arrow" type="button" data-zoom-go="-1" aria-label="이전 효과">' + ICON_PREV + '</button>' +
       '<p class="count">옆으로 밀어 다음 효과</p>' +
       '<button class="arrow" type="button" data-zoom-go="1" aria-label="다음 효과">' + ICON_NEXT + '</button></div>';
+    markSound();
     if (!zoomEl.open) {
       zoomEl.showModal();
       // Android Back closes the large view instead of leaving the page.
@@ -419,6 +541,8 @@
 
   function render(dir) {
     var app = current.app;
+    if (current.view !== 'effects' || app !== current.soundApp) stopSound();
+    current.soundApp = app;
     var rel = release(app);
     var items = pages(app, current.view);
     current.index = Math.min(current.index, Math.max(0, items.length - 1));
@@ -435,6 +559,8 @@
       '<div class="dock">' + downloadButton(app, rel) + installerNote(app, rel) + '</div>' +
       '</article>';
     markOverflow();
+    markSound();
+    fitSoundRows();
     if (focusKey) {
       var target = document.querySelector('[data-key="' + focusKey + '"]:not([disabled])');
       if (target) target.focus({ preventScroll: true });
@@ -475,6 +601,14 @@
   // ---- input ---------------------------------------------------------------
 
   root.addEventListener('click', function (event) {
+    var modeButton = event.target.closest('[data-fx-mode]');
+    if (modeButton) {
+      current.fxMode = modeButton.getAttribute('data-fx-mode');
+      current.index = 0;
+      history.replaceState(null, '', hashFor(current.app, current.view, 0));
+      render();
+      return;
+    }
     var card = event.target.closest('[data-zoom]');
     if (card) {
       var at = card.getAttribute('data-zoom').split(':');
@@ -531,6 +665,7 @@
   window.addEventListener('resize', function () {
     if (!current.app) return;
     fitTabs();
+    if (current.view === 'effects' && current.fxMode === 'sounds') { current.soundPer = 0; render(); return; }
     // The gallery's cards per page follow the screen height; stay in the same category when that changes.
     var per = effectsPerPage();
     if (per === lastPer) return;
