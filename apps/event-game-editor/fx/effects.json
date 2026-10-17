@@ -1,0 +1,402 @@
+[
+ {
+  "id": "camera",
+  "title": "카메라",
+  "desc": "그림을 천천히 움직여 시선을 이끕니다. 속도 3단계.",
+  "items": [
+   {
+    "name": "천천히 다가가기",
+    "file": "camera-zoomIn.webp"
+   },
+   {
+    "name": "천천히 물러나기",
+    "file": "camera-zoomOut.webp"
+   },
+   {
+    "name": "왼쪽으로 훑기",
+    "file": "camera-panLeft.webp"
+   },
+   {
+    "name": "오른쪽으로 훑기",
+    "file": "camera-panRight.webp"
+   },
+   {
+    "name": "위로 훑기",
+    "file": "camera-panUp.webp"
+   },
+   {
+    "name": "아래로 훑기",
+    "file": "camera-panDown.webp"
+   },
+   {
+    "name": "떠다니기",
+    "file": "camera-drift.webp"
+   },
+   {
+    "name": "좌우로 기울기",
+    "file": "camera-sway.webp"
+   },
+   {
+    "name": "숨쉬기",
+    "file": "camera-breathe.webp"
+   },
+   {
+    "name": "기울어진 화면",
+    "file": "camera-tilt.webp"
+   }
+  ]
+ },
+ {
+  "id": "mood",
+  "title": "분위기",
+  "desc": "색감과 빛으로 시간·감정을 바꿉니다. 처음은 원래 그림, 바뀐 뒤가 분위기입니다.",
+  "items": [
+   {
+    "name": "맑은 낮",
+    "file": "mood-day.webp"
+   },
+   {
+    "name": "밤",
+    "file": "mood-night.webp"
+   },
+   {
+    "name": "노을",
+    "file": "mood-dusk.webp"
+   },
+   {
+    "name": "새벽",
+    "file": "mood-dawn.webp"
+   },
+   {
+    "name": "회상 (세피아)",
+    "file": "mood-memory.webp"
+   },
+   {
+    "name": "위기 (붉게)",
+    "file": "mood-danger.webp"
+   },
+   {
+    "name": "꿈",
+    "file": "mood-dream.webp"
+   },
+   {
+    "name": "차가움",
+    "file": "mood-cold.webp"
+   },
+   {
+    "name": "흑백",
+    "file": "mood-mono.webp"
+   },
+   {
+    "name": "바랜 사진",
+    "file": "mood-faded.webp"
+   },
+   {
+    "name": "선명하게",
+    "file": "mood-vivid.webp"
+   },
+   {
+    "name": "공포",
+    "file": "mood-horror.webp"
+   },
+   {
+    "name": "네온",
+    "file": "mood-neon.webp"
+   }
+  ]
+ },
+ {
+  "id": "weather",
+  "title": "날씨",
+  "desc": "그림 위에 입자를 흩뿌립니다. 양 3단계.",
+  "items": [
+   {
+    "name": "비",
+    "file": "weather-rain.webp"
+   },
+   {
+    "name": "폭풍우 (번개)",
+    "file": "weather-storm.webp"
+   },
+   {
+    "name": "눈",
+    "file": "weather-snow.webp"
+   },
+   {
+    "name": "안개",
+    "file": "weather-fog.webp"
+   },
+   {
+    "name": "먼지",
+    "file": "weather-dust.webp"
+   },
+   {
+    "name": "불씨",
+    "file": "weather-embers.webp"
+   },
+   {
+    "name": "꽃잎",
+    "file": "weather-petals.webp"
+   },
+   {
+    "name": "낙엽",
+    "file": "weather-leaves.webp"
+   },
+   {
+    "name": "반딧불",
+    "file": "weather-fireflies.webp"
+   },
+   {
+    "name": "반짝이는 별",
+    "file": "weather-stars.webp"
+   },
+   {
+    "name": "물방울",
+    "file": "weather-bubbles.webp"
+   },
+   {
+    "name": "재",
+    "file": "weather-ash.webp"
+   },
+   {
+    "name": "반짝임",
+    "file": "weather-sparkles.webp"
+   }
+  ]
+ },
+ {
+  "id": "warp",
+  "title": "일렁임",
+  "desc": "그림 자체를 물결·아지랑이처럼 일그러뜨립니다.",
+  "items": [
+   {
+    "name": "물결",
+    "file": "warp-water.webp"
+   },
+   {
+    "name": "아지랑이",
+    "file": "warp-heat.webp"
+   },
+   {
+    "name": "꿈결",
+    "file": "warp-dream.webp"
+   },
+   {
+    "name": "일그러짐",
+    "file": "warp-wobble.webp"
+   }
+  ]
+ },
+ {
+  "id": "overlay",
+  "title": "겹침",
+  "desc": "그림 위에 막을 겹칩니다. 여러 개를 함께 켤 수 있어요.",
+  "items": [
+   {
+    "name": "가장자리 어둡게",
+    "file": "overlay-vignette.webp"
+   },
+   {
+    "name": "필름 입자",
+    "file": "overlay-grain.webp"
+   },
+   {
+    "name": "주사선",
+    "file": "overlay-scanlines.webp"
+   },
+   {
+    "name": "위아래 검은 띠",
+    "file": "overlay-letterbox.webp"
+   },
+   {
+    "name": "빛줄기",
+    "file": "overlay-lightRays.webp"
+   },
+   {
+    "name": "뿌연 빛",
+    "file": "overlay-haze.webp"
+   },
+   {
+    "name": "은은한 빛",
+    "file": "overlay-glow.webp"
+   },
+   {
+    "name": "사진 테두리",
+    "file": "overlay-frame.webp"
+   }
+  ]
+ },
+ {
+  "id": "transition",
+  "title": "전환",
+  "desc": "앞 사건에서 이 사건으로 넘어올 때 화면이 바뀌는 방식입니다.",
+  "items": [
+   {
+    "name": "바로 전환",
+    "file": "transition-cut.webp"
+   },
+   {
+    "name": "서서히",
+    "file": "transition-fade.webp"
+   },
+   {
+    "name": "검게 열기",
+    "file": "transition-blackFade.webp"
+   },
+   {
+    "name": "하얗게 열기",
+    "file": "transition-whiteFade.webp"
+   },
+   {
+    "name": "왼쪽으로 닦기",
+    "file": "transition-wipeLeft.webp"
+   },
+   {
+    "name": "오른쪽으로 닦기",
+    "file": "transition-wipeRight.webp"
+   },
+   {
+    "name": "아래로 닦기",
+    "file": "transition-wipeDown.webp"
+   },
+   {
+    "name": "위로 닦기",
+    "file": "transition-wipeUp.webp"
+   },
+   {
+    "name": "동그랗게 열기",
+    "file": "transition-iris.webp"
+   },
+   {
+    "name": "블라인드",
+    "file": "transition-blinds.webp"
+   },
+   {
+    "name": "밀어 넣기",
+    "file": "transition-slide.webp"
+   },
+   {
+    "name": "확대하며 등장",
+    "file": "transition-zoom.webp"
+   },
+   {
+    "name": "지직거림",
+    "file": "transition-glitch.webp"
+   },
+   {
+    "name": "흐릿하게 번지기",
+    "file": "transition-dissolve.webp"
+   },
+   {
+    "name": "번쩍 전환",
+    "file": "transition-flashCut.webp"
+   }
+  ]
+ },
+ {
+  "id": "beat",
+  "title": "순간 효과",
+  "desc": "사건 시작·선택 직후·얻었을 때·잃었을 때 한 번 일어납니다.",
+  "items": [
+   {
+    "name": "번쩍",
+    "file": "beat-flash.webp"
+   },
+   {
+    "name": "하얗게 번쩍",
+    "file": "beat-whiteFlash.webp"
+   },
+   {
+    "name": "붉게 번쩍",
+    "file": "beat-redFlash.webp"
+   },
+   {
+    "name": "암전",
+    "file": "beat-blackout.webp"
+   },
+   {
+    "name": "흔들림",
+    "file": "beat-shake.webp"
+   },
+   {
+    "name": "크게 흔들림",
+    "file": "beat-bigShake.webp"
+   },
+   {
+    "name": "두근",
+    "file": "beat-pulse.webp"
+   },
+   {
+    "name": "지직",
+    "file": "beat-glitch.webp"
+   },
+   {
+    "name": "확 다가감",
+    "file": "beat-zoomPunch.webp"
+   },
+   {
+    "name": "번개",
+    "file": "beat-lightning.webp"
+   },
+   {
+    "name": "흐려졌다 돌아옴",
+    "file": "beat-blur.webp"
+   },
+   {
+    "name": "차갑게 물듦",
+    "file": "beat-tint.webp"
+   }
+  ]
+ },
+ {
+  "id": "character",
+  "title": "인물",
+  "desc": "투명 PNG 인물을 그림 위에 겹칩니다. 등장 방식과 움직임을 고릅니다.",
+  "items": [
+   {
+    "name": "등장 · 서서히",
+    "file": "character-enter-fade.webp"
+   },
+   {
+    "name": "등장 · 왼쪽에서",
+    "file": "character-enter-slideLeft.webp"
+   },
+   {
+    "name": "등장 · 오른쪽에서",
+    "file": "character-enter-slideRight.webp"
+   },
+   {
+    "name": "등장 · 아래에서",
+    "file": "character-enter-rise.webp"
+   },
+   {
+    "name": "등장 · 톡 튀어나옴",
+    "file": "character-enter-pop.webp"
+   },
+   {
+    "name": "등장 · 위에서",
+    "file": "character-enter-drop.webp"
+   },
+   {
+    "name": "움직임 · 숨쉬기",
+    "file": "character-motion-breathe.webp"
+   },
+   {
+    "name": "움직임 · 들썩임",
+    "file": "character-motion-bob.webp"
+   },
+   {
+    "name": "움직임 · 흔들흔들",
+    "file": "character-motion-sway.webp"
+   },
+   {
+    "name": "움직임 · 둥실",
+    "file": "character-motion-float.webp"
+   },
+   {
+    "name": "움직임 · 떨림",
+    "file": "character-motion-tremble.webp"
+   }
+  ]
+ }
+]

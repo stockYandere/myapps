@@ -13,6 +13,12 @@
     { id: 'features', label: '기능' },
     { id: 'history', label: '업데이트' }
   ];
+  var EFFECTS_VIEW = { id: 'effects', label: '연출' };
+
+  /** Apps with an effects gallery get a 연출 view after 기능. */
+  function viewsFor(app) {
+    return app && app.effectsList && app.effectsList.length ? VIEWS.slice(0, 3).concat(EFFECTS_VIEW, VIEWS.slice(3)) : VIEWS;
+  }
 
   // ---- theme ---------------------------------------------------------------
 
@@ -96,6 +102,13 @@
         if (app.history) {
           jobs.push(fetchJson(app.history).then(function (history) { app.historyList = history; }, function () {}));
         }
+        if (app.effects) {
+          jobs.push(fetchJson(app.effects).then(function (list) {
+            var base = app.effects.replace(/[^/]*$/, '');
+            list.forEach(function (c) { c.items.forEach(function (it) { it.src = base + it.file; }); });
+            app.effectsList = list;
+          }, function () {}));
+        }
         return Promise.all(jobs);
       }));
     });
@@ -155,8 +168,8 @@
     return state.apps.filter(function (a) { return a.id === id; })[0];
   }
 
-  function viewExists(id) {
-    return VIEWS.some(function (v) { return v.id === id; });
+  function viewExists(app, id) {
+    return viewsFor(app).some(function (v) { return v.id === id; });
   }
 
   /** `#/<app>/<view>/<step>`; the step is 1-based in the URL. */
@@ -167,9 +180,10 @@
 
   function parseHash() {
     var parts = location.hash.replace(/^#\/?/, '').split('/');
+    var app = findApp(parts[0]) || state.apps[0];
     return {
-      app: findApp(parts[0]) || state.apps[0],
-      view: viewExists(parts[1]) ? parts[1] : 'about',
+      app: app,
+      view: viewExists(app, parts[1]) ? parts[1] : 'about',
       index: Math.max(0, (parseInt(parts[2], 10) || 1) - 1)
     };
   }
@@ -212,7 +226,8 @@
   }
 
   function segments(app) {
-    return '<nav class="seg" role="tablist" aria-label="' + esc(app.name) + ' 정보">' + VIEWS.map(function (v) {
+    var views = viewsFor(app);
+    return '<nav class="seg" role="tablist" aria-label="' + esc(app.name) + ' 정보" style="--seg-n:' + views.length + '">' + views.map(function (v) {
       return '<a role="tab" href="' + hashFor(app, v.id) + '" data-key="seg-' + v.id + '" aria-selected="' + (v.id === current.view) + '">' + v.label + '</a>';
     }).join('') + '</nav>';
   }
@@ -254,6 +269,7 @@
         return { kicker: '기능 ' + (i + 1) + ' / ' + all.length, title: g.title, body: list(g.items || [], 'features') };
       });
     }
+    if (view === 'effects') return effectPages(app);
     if (view === 'history') {
       var versions = app.historyList || (app.latest ? [app.latest] : []);
       return versions.map(function (h, i) {
@@ -270,6 +286,111 @@
     }
     return [];
   }
+
+  // ---- effects gallery ----------------------------------------------------
+
+  /** Cards per page: two rows of two, or one row on short screens, so a page never scrolls. */
+  function effectsPerPage() {
+    return window.innerHeight < 700 ? 2 : 4;
+  }
+
+  /** Flat page list over all categories; each page knows its category and its place in it. */
+  function effectPages(app) {
+    var per = effectsPerPage();
+    var out = [];
+    (app.effectsList || []).forEach(function (cat, c) {
+      var total = Math.ceil(cat.items.length / per);
+      for (var i = 0; i < total; i++) {
+        out.push({ cat: cat, catIndex: c, page: i, pages: total, items: cat.items.slice(i * per, i * per + per), first: i * per });
+      }
+    });
+    return out;
+  }
+
+  function effectsView(app, items, index, dir) {
+    if (!items.length) return '<p class="empty">아직 내용이 없습니다.</p>';
+    var page = items[index];
+    var start = index - page.page;
+    var cats = (app.effectsList || []).map(function (cat, c) {
+      var at = 0;
+      for (var i = 0; i < items.length; i++) if (items[i].catIndex === c) { at = i; break; }
+      return '<button class="fx-cat" type="button" data-step="' + at + '" data-key="cat-' + esc(cat.id) + '"' +
+        (c === page.catIndex ? ' aria-current="true"' : '') + '>' + esc(cat.title) + '</button>';
+    }).join('');
+    var cards = page.items.map(function (it, i) {
+      return '<button class="fx-card" type="button" data-zoom="' + page.catIndex + ':' + (page.first + i) + '" aria-label="' + esc(it.name) + ' 크게 보기">' +
+        '<img src="' + esc(it.src) + '" alt="" loading="lazy" decoding="async" width="240" height="240">' +
+        '<span>' + esc(it.name) + '</span></button>';
+    }).join('');
+    var nums = '<div class="nums">' + Array.from({ length: page.pages }, function (_, i) {
+      return '<button class="num" type="button" data-step="' + (start + i) + '" data-key="num-' + i + '" aria-label="' + esc(page.cat.title) + ' ' + (i + 1) + '쪽"' +
+        (i === page.page ? ' aria-current="step"' : '') + '>' + (i + 1) + '</button>';
+    }).join('') + '</div>';
+    return '<div class="pager fx-pager">' +
+      '<div class="fx-cats" role="tablist" aria-label="연출 종류">' + cats + '</div>' +
+      '<section class="slide fx-slide"' + (dir ? ' data-dir="' + dir + '"' : '') + ' aria-roledescription="slide">' +
+      '<p class="kicker">' + esc(page.cat.title) + ' · ' + page.cat.items.length + '가지</p>' +
+      '<p class="fx-desc">' + esc(page.cat.desc) + '</p>' +
+      '<div class="fx-grid" style="--fx-rows:' + Math.ceil(effectsPerPage() / 2) + '">' + cards + '</div>' +
+      '</section>' +
+      '<div class="pager-nav">' +
+      '<button class="arrow" type="button" data-step="' + (index - 1) + '" data-key="prev" aria-label="이전"' + (index === 0 ? ' disabled' : '') + '>' + ICON_PREV + '</button>' +
+      nums +
+      '<button class="arrow" type="button" data-step="' + (index + 1) + '" data-key="next" aria-label="다음"' + (index === items.length - 1 ? ' disabled' : '') + '>' + ICON_NEXT + '</button>' +
+      '</div></div>';
+  }
+
+  /** Tapping a card shows it large; ‹ › browse its category, Back/ESC/tap outside closes. */
+  var zoomEl = null;
+  function zoom(catIndex, itemIndex) {
+    var cat = current.app.effectsList[catIndex];
+    if (!cat) return;
+    var n = cat.items.length;
+    var i = (itemIndex + n) % n;
+    var it = cat.items[i];
+    if (!zoomEl) {
+      zoomEl = document.createElement('dialog');
+      zoomEl.className = 'fx-zoom';
+      document.body.appendChild(zoomEl);
+      zoomEl.addEventListener('click', function (event) {
+        var go = event.target.closest('[data-zoom-go]');
+        if (go) { zoom(+zoomEl.getAttribute('data-cat'), +zoomEl.getAttribute('data-item') + +go.getAttribute('data-zoom-go')); return; }
+        if (event.target === zoomEl || event.target.closest('[data-zoom-close]')) zoomEl.close();
+      });
+      zoomEl.addEventListener('close', function () {
+        if (history.state && history.state.zoom) history.back();
+      });
+      var zx = null;
+      zoomEl.addEventListener('touchstart', function (event) { zx = event.touches.length === 1 ? event.touches[0].clientX : null; }, { passive: true });
+      zoomEl.addEventListener('touchend', function (event) {
+        if (zx === null) return;
+        var dx = event.changedTouches[0].clientX - zx;
+        zx = null;
+        if (Math.abs(dx) >= SWIPE_MIN) zoom(+zoomEl.getAttribute('data-cat'), +zoomEl.getAttribute('data-item') + (dx < 0 ? 1 : -1));
+      }, { passive: true });
+    }
+    zoomEl.setAttribute('data-cat', catIndex);
+    zoomEl.setAttribute('data-item', i);
+    zoomEl.setAttribute('aria-label', it.name);
+    zoomEl.setAttribute('style', accentStyle(current.app));
+    zoomEl.innerHTML =
+      '<div class="fx-zoom-head"><p class="kicker">' + esc(cat.title) + ' · ' + (i + 1) + ' / ' + n + '</p>' +
+      '<button class="arrow" type="button" data-zoom-close aria-label="닫기"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>' +
+      '<img src="' + esc(it.src) + '" alt="' + esc(it.name) + '">' +
+      '<h2>' + esc(it.name) + '</h2>' +
+      '<div class="pager-nav"><button class="arrow" type="button" data-zoom-go="-1" aria-label="이전 효과">' + ICON_PREV + '</button>' +
+      '<p class="count">옆으로 밀어 다음 효과</p>' +
+      '<button class="arrow" type="button" data-zoom-go="1" aria-label="다음 효과">' + ICON_NEXT + '</button></div>';
+    if (!zoomEl.open) {
+      zoomEl.showModal();
+      // Android Back closes the large view instead of leaving the page.
+      history.pushState({ zoom: true }, '', location.href);
+    }
+  }
+
+  window.addEventListener('popstate', function () {
+    if (zoomEl && zoomEl.open) zoomEl.close();
+  });
 
   function pager(items, index, dir) {
     if (!items.length) return '<p class="empty">아직 내용이 없습니다.</p>';
@@ -302,6 +423,7 @@
     var items = pages(app, current.view);
     current.index = Math.min(current.index, Math.max(0, items.length - 1));
     current.count = items.length;
+    current.fxCat = current.view === 'effects' && items[current.index] ? items[current.index].catIndex : null;
 
     var focusKey = document.activeElement && document.activeElement.getAttribute('data-key');
     tabs();
@@ -309,7 +431,7 @@
       '<article class="app" style="' + accentStyle(app) + '">' +
       appHead(app, rel) +
       segments(app) +
-      '<div class="view">' + (current.view === 'about' ? aboutView(app, rel) : pager(items, current.index, dir)) + '</div>' +
+      '<div class="view">' + (current.view === 'about' ? aboutView(app, rel) : current.view === 'effects' ? effectsView(app, items, current.index, dir) : pager(items, current.index, dir)) + '</div>' +
       '<div class="dock">' + downloadButton(app, rel) + installerNote(app, rel) + '</div>' +
       '</article>';
     markOverflow();
@@ -353,6 +475,12 @@
   // ---- input ---------------------------------------------------------------
 
   root.addEventListener('click', function (event) {
+    var card = event.target.closest('[data-zoom]');
+    if (card) {
+      var at = card.getAttribute('data-zoom').split(':');
+      zoom(+at[0], +at[1]);
+      return;
+    }
     var stepButton = event.target.closest('[data-step]');
     if (stepButton) {
       step(parseInt(stepButton.getAttribute('data-step'), 10));
@@ -368,6 +496,12 @@
   document.addEventListener('keydown', function (event) {
     if (event.altKey || event.ctrlKey || event.metaKey || !current.app) return;
     if (/^(INPUT|TEXTAREA|SELECT)$/.test(event.target.tagName)) return;
+    if (zoomEl && zoomEl.open) {
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+        zoom(+zoomEl.getAttribute('data-cat'), +zoomEl.getAttribute('data-item') + (event.key === 'ArrowRight' ? 1 : -1));
+      }
+      return;
+    }
     if (/^[1-9]$/.test(event.key)) {
       var app = state.apps[parseInt(event.key, 10) - 1];
       if (app) location.hash = hashFor(app);
@@ -393,7 +527,21 @@
   }, { passive: true });
 
   window.addEventListener('hashchange', route);
-  window.addEventListener('resize', function () { if (current.app) fitTabs(); });
+  var lastPer = effectsPerPage();
+  window.addEventListener('resize', function () {
+    if (!current.app) return;
+    fitTabs();
+    // The gallery's cards per page follow the screen height; stay in the same category when that changes.
+    var per = effectsPerPage();
+    if (per === lastPer) return;
+    var cat = current.fxCat;
+    lastPer = per;
+    if (current.view !== 'effects') return;
+    var items = effectPages(current.app);
+    current.index = Math.max(0, items.findIndex(function (it) { return it.catIndex === cat; }));
+    history.replaceState(null, '', hashFor(current.app, current.view, current.index));
+    render();
+  });
 
   load().then(function () {
     if (!state.apps.length) throw new Error('no apps');

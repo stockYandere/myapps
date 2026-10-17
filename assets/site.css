@@ -304,7 +304,7 @@ button { font: inherit; color: inherit; }
 .seg {
   flex: none;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(var(--seg-n, 4), 1fr);
   gap: 4px;
   padding: 4px;
   border-radius: 14px;
@@ -620,6 +620,122 @@ button { font: inherit; color: inherit; }
 
 .empty { margin: 0; color: var(--faint); font-size: 14px; }
 
+/* Five sections (apps with an effects gallery) share the same row. */
+.seg[style*="--seg-n:5"] a { font-size: 13px; letter-spacing: -.03em; }
+
+/* ---- effects gallery: category buttons, a page of moving examples, tap to enlarge ---- */
+
+.fx-pager { gap: 10px; }
+
+.fx-cats {
+  flex: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 5px;
+}
+
+.fx-cat {
+  height: 32px;
+  padding: 0 4px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--raised);
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.fx-cat[aria-current="true"] {
+  border-color: transparent;
+  background: var(--a);
+  color: #0b0d12;
+}
+
+.fx-slide { padding: 14px; }
+
+.fx-desc {
+  flex: none;
+  margin: 2px 0 10px;
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.fx-grid {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(var(--fx-rows, 2), minmax(0, 1fr));
+  gap: 10px;
+}
+
+.fx-card {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+  -webkit-touch-callout: none;
+}
+
+.fx-card img {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: 50% 30%;
+  border-radius: 12px;
+  background: #1c293a;
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+
+.fx-card span {
+  flex: none;
+  font-size: 13.5px;
+  font-weight: 700;
+  line-height: 1.3;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fx-card:active img { transform: scale(.97); }
+
+.fx-zoom {
+  width: min(calc(100vw - 24px), 460px);
+  max-height: calc(100dvh - 24px);
+  padding: 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: 22px;
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow);
+}
+
+.fx-zoom::backdrop { background: rgba(0, 0, 0, .62); }
+.fx-zoom[open] { display: flex; flex-direction: column; gap: 10px; }
+.fx-zoom-head { display: flex; align-items: center; justify-content: space-between; }
+.fx-zoom img { width: 100%; aspect-ratio: 1; max-height: calc(100dvh - 210px); object-fit: contain; border-radius: 14px; background: #1c293a; }
+.fx-zoom h2 { margin: 0; font-size: 19px; letter-spacing: -.03em; text-align: center; }
+.fx-zoom .count { font-size: 13px; font-weight: 600; }
+
+@media (max-width: 340px) { .fx-cat { font-size: 12px; letter-spacing: -.04em; padding: 0 2px; } }
+
 /* ---- download dock ------------------------------------------------------- */
 
 .dock {
@@ -732,6 +848,8 @@ kbd {
   .slide-body { font-size: 15px; }
   .btn { min-height: 46px; }
   .arrow, .num { height: 38px; }
+  .fx-cat { height: 30px; }
+  .fx-desc { -webkit-line-clamp: 1; margin-bottom: 8px; }
 }
 
 /* Very short screens (phone in landscape): fall back to normal page scrolling. */

@@ -11,6 +11,7 @@
 | `apps.json` | 앱 소개: 이름, 핵심 문구, 핵심 기능(`core`), 기능, 사용법, 알아두세요. **직접 편집** |
 | `apps/<앱>/latest.json` | 최신 버전 정보(APK 주소, 크기, SHA-256, 변경 내용). 앱 내 업데이트가 이 파일을 읽음. **자동 생성** |
 | `apps/<앱>/history.json` | 최근 버전 기록(최대 30개). **자동 생성** |
+| `apps/event-game-editor/fx/` | 사건 게임 에디터의 연출 예시(움직이는 WebP 86개)와 `effects.json`. **자동 생성**: 에디터 저장소에서 `node make-fx-gallery.cjs <이 폴더>` |
 | Releases | APK 파일. 태그 형식 `<앱>-v<버전>` (예: `nai-pocket-v0.11.40r`) |
 
 ## NAI Pocket 자동 배포
@@ -29,3 +30,8 @@
    "release": { "versionName": "0.1.37", "publishedAt": "2026-10-14", "sizeLabel": "92.7 KB", "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.37/Arca-Inspect-0.1.37.apk" }
    ```
 3. 자동 배포가 있는 앱은 `manifest`, `history`에 `apps/<앱>/latest.json`, `history.json` 경로를 적습니다.
+4. 움직이는 예시 모음이 있는 앱은 `effects`에 `effects.json` 경로를 적습니다. 그러면 기능 다음에 **연출** 탭이 생깁니다(종류 버튼 8개 · 한 쪽에 예시 4개, 낮은 화면은 2개 · 누르면 크게 보기, 옆으로 밀어 다음 효과, 뒤로가기로 닫기).
+   ```json
+   [{ "id": "mood", "title": "분위기", "desc": "한 줄 설명", "items": [{ "name": "밤", "file": "mood-night.webp" }] }]
+   ```
+5. `manifest`는 다른 저장소의 주소도 됩니다. 사건 게임 에디터는 에디터 저장소의 `release/update.json`(앱 자동 업데이트가 읽는 파일, `apkUrl`·`publishedAt` 포함)을 그대로 읽습니다.
