@@ -1,12 +1,12 @@
 {
   "app": "arca-inspect",
   "packageName": "app.arcainspect.r",
-  "versionCode": 4,
-  "versionName": "0.1.3",
-  "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.3/Arca-Inspect-R-v0.1.3.apk",
-  "sha256": "27a690962c9c1be394e8b4d3b3a9601c681c0848f0b910f70f6c3309beb67d6a",
+  "versionCode": 5,
+  "versionName": "0.1.4",
+  "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.4/Arca-Inspect-R-v0.1.4.apk",
+  "sha256": "bb646ea38ce5b7d0a66c2afef635d6ac47bc91750e060858d44fd9ba22531d24",
   "size": 873412,
   "minSdk": 23,
-  "publishedAt": "2026-10-16T06:34:43Z",
-  "notes": "- 일괄 보기에서 사진을 최대 3장씩 동시에 받아 검사. 그림이 많은 글일수록 빨라짐. 메모리가 작은 기기(최대 힙 384MB 미만)는 2장, 256MB 미만은 1장씩.\n- Rust 엔진이 원본을 다시 복사하지 않고 그대로 읽어, 동시 검사 중 메모리 사용을 줄임.\n- 진행 상태 줄이 길면 말줄임 표시. 결과 순서·선택·저장/Pocket 전달은 기존과 동일.\n- 6개 스레드 동시 검사 300회가 순차 결과와 일치, 검사 중 창 닫기(중단) 시 \"미확인\" 처리 확인. 기존 테스트·차등 비교 통과. 실기기 속도 미측정."
+  "publishedAt": "2026-10-17T01:22:34Z",
+  "notes": "- NovelAI Diffusion V5 Full의 Medium 생성 강도 식별. 모델 해시 70AB5786·93F4BD30과 모델 이름 nai-diffusion-5-full-medium(인페인트 포함)을 \"NovelAI Diffusion V5 Full (Medium)\"으로 표시. 기존에는 \"V5 · Full/Curated 확인 불가 (해시)\"로 나옴.\n- 해시는 공식 목록이 없어 MooshieUI에 등록된 값을 사용(Medium은 14스텝 고정이라 실제 그림의 스텝 수와도 일치). High(기존 V5 Full) 해시와 표시는 그대로.\n- 테스트 기준 구현과 차등 비교 입력에도 같은 규칙과 값 추가. 기존 테스트 통과."
 }

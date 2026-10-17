@@ -2,6 +2,18 @@
   {
     "app": "arca-inspect",
     "packageName": "app.arcainspect.r",
+    "versionCode": 5,
+    "versionName": "0.1.4",
+    "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.4/Arca-Inspect-R-v0.1.4.apk",
+    "sha256": "bb646ea38ce5b7d0a66c2afef635d6ac47bc91750e060858d44fd9ba22531d24",
+    "size": 873412,
+    "minSdk": 23,
+    "publishedAt": "2026-10-17T01:22:34Z",
+    "notes": "- NovelAI Diffusion V5 Full의 Medium 생성 강도 식별. 모델 해시 70AB5786·93F4BD30과 모델 이름 nai-diffusion-5-full-medium(인페인트 포함)을 \"NovelAI Diffusion V5 Full (Medium)\"으로 표시. 기존에는 \"V5 · Full/Curated 확인 불가 (해시)\"로 나옴.\n- 해시는 공식 목록이 없어 MooshieUI에 등록된 값을 사용(Medium은 14스텝 고정이라 실제 그림의 스텝 수와도 일치). High(기존 V5 Full) 해시와 표시는 그대로.\n- 테스트 기준 구현과 차등 비교 입력에도 같은 규칙과 값 추가. 기존 테스트 통과."
+  },
+  {
+    "app": "arca-inspect",
+    "packageName": "app.arcainspect.r",
     "versionCode": 4,
     "versionName": "0.1.3",
     "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.3/Arca-Inspect-R-v0.1.3.apk",
