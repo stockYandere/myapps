@@ -1,12 +1,12 @@
 {
   "app": "arca-inspect",
   "packageName": "app.arcainspect.r",
-  "versionCode": 5,
-  "versionName": "0.1.4",
-  "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.4/Arca-Inspect-R-v0.1.4.apk",
-  "sha256": "bb646ea38ce5b7d0a66c2afef635d6ac47bc91750e060858d44fd9ba22531d24",
-  "size": 873412,
+  "versionCode": 6,
+  "versionName": "0.1.5",
+  "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.5/Arca-Inspect-R-v0.1.5.apk",
+  "sha256": "bd71810365b2f9133191a5573195b3b5987ae7acd694ee7dd000542511593c8f",
+  "size": 877574,
   "minSdk": 23,
-  "publishedAt": "2026-10-17T01:22:34Z",
-  "notes": "- NovelAI Diffusion V5 Full의 Medium 생성 강도 식별. 모델 해시 70AB5786·93F4BD30과 모델 이름 nai-diffusion-5-full-medium(인페인트 포함)을 \"NovelAI Diffusion V5 Full (Medium)\"으로 표시. 기존에는 \"V5 · Full/Curated 확인 불가 (해시)\"로 나옴.\n- 해시는 공식 목록이 없어 MooshieUI에 등록된 값을 사용(Medium은 14스텝 고정이라 실제 그림의 스텝 수와도 일치). High(기존 V5 Full) 해시와 표시는 그대로.\n- 테스트 기준 구현과 차등 비교 입력에도 같은 규칙과 값 추가. 기존 테스트 통과."
+  "publishedAt": "2026-10-18T00:55:31Z",
+  "notes": "- 사용자 페이지(닉네임을 눌러 작성글이 보이는 화면) 위쪽에 메모 쓰기/수정, 차단하기/차단 해제, 메모·차단 목록 버튼 추가. 메모는 앱 안에만 저장(최대 500자).\n- 메모를 남기면 게시글 목록·본문·댓글의 닉네임 옆에 📝 메모 표시.\n- 차단하면 게시글 목록(일반·개념글·검색·이어서 불러온 목록)에서 그 사용자의 글을 숨기고, 글에 들어가면 본문을 가린 뒤 \"그래도 보기\"로 열 수 있음. 사용자 페이지는 가리지 않아 거기서 해제 가능. 차단·해제는 새로고침 없이 열린 탭에 바로 반영.\n- 일반 계정(닉네임#번호)은 목록에 번호 없이 닉네임만 나와 같은 닉네임의 다른 사람과 구분할 수 없으므로, 목록에서는 숨기지 않고 본문만 가림. 고정닉은 목록에서도 숨김.\n- 실제 아카라이브 목록·게시글·사용자 페이지로 숨김·가림·메모 표시·버튼 위치 확인. 저장/페이지 스크립트 테스트 추가, 기존 테스트 통과."
 }
