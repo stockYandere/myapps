@@ -2,6 +2,18 @@
   {
     "app": "arca-inspect",
     "packageName": "app.arcainspect.r",
+    "versionCode": 7,
+    "versionName": "0.1.6",
+    "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.6/Arca-Inspect-R-v0.1.6.apk",
+    "sha256": "c5da85c72490f5b19f13affeedfa4e6a374d6f509a6d590e7f416758ec1dd9ba",
+    "size": 877574,
+    "minSdk": 23,
+    "publishedAt": "2026-10-18T00:58:25Z",
+    "notes": "- 일반 계정(닉네임#번호) 차단 시 \"목록에서도 숨기기\" 선택 추가. 고르면 전체글·개념글 목록과 검색 결과에서 같은 닉네임의 일반 계정 글을 모두 숨김(목록에는 번호가 없어 구분 불가). 같은 이름의 고정닉 글은 다른 사람이라 숨기지 않음. \"본문만 가리기\"는 기존처럼 글 안에서만 가림.\n- 고정닉 차단 안내를 \"전체글·개념글 목록과 검색 결과에서 숨김\"으로 명확히 표시. 사용자 페이지에 차단 범위 표시.\n- 실제 아카라이브 목록·검색·개념글 페이지 구조로 확인. 저장/페이지 스크립트 테스트 보강, 기존 테스트 통과."
+  },
+  {
+    "app": "arca-inspect",
+    "packageName": "app.arcainspect.r",
     "versionCode": 6,
     "versionName": "0.1.5",
     "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.5/Arca-Inspect-R-v0.1.5.apk",
