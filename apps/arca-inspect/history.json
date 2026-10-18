@@ -2,6 +2,18 @@
   {
     "app": "arca-inspect",
     "packageName": "app.arcainspect.r",
+    "versionCode": 8,
+    "versionName": "0.1.7",
+    "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.7/Arca-Inspect-R-v0.1.7.apk",
+    "sha256": "4ab32a74126af587a56f9d4116b3922423cc3fbc2949dded7e353fa80713269c",
+    "size": 877574,
+    "minSdk": 23,
+    "publishedAt": "2026-10-18T01:09:16Z",
+    "notes": "- 닉네임 옆 메모를 \"닉네임 - 메모\" 형태의 작은 빨간 글씨로 변경. 배경과 📝 아이콘 제거, 닉네임보다 작게 표시. 사용자 페이지 상단 메모와 메모·차단 목록에서도 아이콘 제거."
+  },
+  {
+    "app": "arca-inspect",
+    "packageName": "app.arcainspect.r",
     "versionCode": 7,
     "versionName": "0.1.6",
     "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.6/Arca-Inspect-R-v0.1.6.apk",
