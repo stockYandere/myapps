@@ -14,10 +14,14 @@
     { id: 'history', label: '업데이트' }
   ];
   var EFFECTS_VIEW = { id: 'effects', label: '연출' };
+  var DOCS_VIEW = { id: 'docs', label: '문서' };
 
-  /** Apps with an effects gallery get a 연출 view after 기능. */
+  /** Apps with an effects gallery get a 연출 view after 기능, and apps with helpful documents a 문서 view before 업데이트. */
   function viewsFor(app) {
-    return app && app.effectsList && app.effectsList.length ? VIEWS.slice(0, 3).concat(EFFECTS_VIEW, VIEWS.slice(3)) : VIEWS;
+    var views = VIEWS.slice(0, 3);
+    if (app && app.effectsList && app.effectsList.length) views.push(EFFECTS_VIEW);
+    if (app && app.docsList && app.docsList.length) views.push(DOCS_VIEW);
+    return views.concat(VIEWS.slice(3));
   }
 
   // ---- theme ---------------------------------------------------------------
@@ -111,6 +115,13 @@
         }
         if (app.sounds) {
           jobs.push(fetchJson(app.sounds).then(function (list) { app.soundList = list; }, function () {}));
+        }
+        if (app.docs) {
+          jobs.push(fetchJson(app.docs).then(function (list) {
+            var base = app.docs.replace(/[^/]*$/, '');
+            list.forEach(function (d) { d.url = base + d.src; });
+            app.docsList = list;
+          }, function () {}));
         }
         return Promise.all(jobs);
       }));
@@ -273,6 +284,22 @@
       });
     }
     if (view === 'effects') return current.fxMode === 'sounds' && app.soundList ? soundPages(app) : effectPages(app);
+    if (view === 'docs') {
+      var docs = app.docsList || [], per = docsPerPage(), out = [];
+      for (var d = 0; d < docs.length; d += per) {
+        out.push({
+          kicker: '도움되는 문서 · ' + docs.length + '개',
+          title: '도움되는 문서',
+          body: '<div class="doc-list">' + docs.slice(d, d + per).map(function (doc, i) {
+            return '<button class="doc-row" type="button" data-doc="' + (d + i) + '" data-key="doc-' + (d + i) + '">' +
+              '<span class="doc-num" aria-hidden="true">' + (d + i + 1) + '</span>' +
+              '<span class="doc-text"><b>' + esc(doc.title) + '</b><small>' + esc(doc.summary || '') + '</small>' +
+              '<em>' + [doc.minutes ? '약 ' + doc.minutes + '분' : '', formatDate(doc.updated)].filter(Boolean).join(' · ') + ' · 눌러서 읽기</em></span></button>';
+          }).join('') + '</div>'
+        });
+      }
+      return out;
+    }
     if (view === 'history') {
       var versions = app.historyList || (app.latest ? [app.latest] : []);
       return versions.map(function (h, i) {
@@ -288,6 +315,46 @@
       });
     }
     return [];
+  }
+
+  // ---- helpful documents: a list, and a reader that opens over the page (Back closes it) ------
+
+  function docsPerPage() {
+    return window.innerHeight < 700 ? 2 : 3;
+  }
+
+  var docEl = null, docCache = {};
+  function openDoc(index) {
+    var doc = (current.app.docsList || [])[index];
+    if (!doc) return;
+    if (!docEl) {
+      docEl = document.createElement('dialog');
+      docEl.className = 'doc-reader';
+      document.body.appendChild(docEl);
+      docEl.addEventListener('click', function (event) {
+        if (event.target === docEl || event.target.closest('[data-doc-close]')) docEl.close();
+        var top = event.target.closest('[data-doc-top]');
+        if (top) docEl.querySelector('.doc-body').scrollTo({ top: 0, behavior: 'smooth' });
+      });
+      docEl.addEventListener('close', function () {
+        if (history.state && history.state.doc) history.back();
+      });
+    }
+    docEl.setAttribute('style', accentStyle(current.app));
+    docEl.setAttribute('aria-label', doc.title);
+    docEl.innerHTML = '<div class="doc-head"><span class="doc-num" aria-hidden="true">' + (index + 1) + '</span><h2>' + esc(doc.title) + '</h2>' +
+      '<button class="arrow" type="button" data-doc-close aria-label="닫기"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>' +
+      '<div class="doc-body" tabindex="0"><p class="empty">불러오는 중…</p></div>' +
+      '<button class="doc-top" type="button" data-doc-top aria-label="맨 위로">↑</button>';
+    var body = docEl.querySelector('.doc-body');
+    var show = function (html) { if (docEl.getAttribute('aria-label') === doc.title) { body.innerHTML = html; body.scrollTop = 0; } };
+    if (docCache[doc.url]) show(docCache[doc.url]);
+    else fetch(doc.url, { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+      .then(function (html) { docCache[doc.url] = html; show(html); }, function () { show('<p class="empty">문서를 불러오지 못했습니다. 잠시 후 다시 열어 주세요.</p>'); });
+    if (!docEl.open) {
+      docEl.showModal();
+      history.pushState({ doc: true }, '', location.href);
+    }
   }
 
   // ---- effects gallery ----------------------------------------------------
@@ -512,6 +579,7 @@
 
   window.addEventListener('popstate', function () {
     if (zoomEl && zoomEl.open) zoomEl.close();
+    if (docEl && docEl.open) docEl.close();
   });
 
   function pager(items, index, dir) {
@@ -609,6 +677,11 @@
       render();
       return;
     }
+    var docButton = event.target.closest('[data-doc]');
+    if (docButton) {
+      openDoc(parseInt(docButton.getAttribute('data-doc'), 10));
+      return;
+    }
     var card = event.target.closest('[data-zoom]');
     if (card) {
       var at = card.getAttribute('data-zoom').split(':');
@@ -630,6 +703,7 @@
   document.addEventListener('keydown', function (event) {
     if (event.altKey || event.ctrlKey || event.metaKey || !current.app) return;
     if (/^(INPUT|TEXTAREA|SELECT)$/.test(event.target.tagName)) return;
+    if (docEl && docEl.open) return;
     if (zoomEl && zoomEl.open) {
       if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
         zoom(+zoomEl.getAttribute('data-cat'), +zoomEl.getAttribute('data-item') + (event.key === 'ArrowRight' ? 1 : -1));
@@ -666,6 +740,7 @@
     if (!current.app) return;
     fitTabs();
     if (current.view === 'effects' && current.fxMode === 'sounds') { current.soundPer = 0; render(); return; }
+    if (current.view === 'docs') { render(); return; }
     // The gallery's cards per page follow the screen height; stay in the same category when that changes.
     var per = effectsPerPage();
     if (per === lastPer) return;

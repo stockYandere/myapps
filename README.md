@@ -12,6 +12,7 @@
 | `apps/<앱>/latest.json` | 최신 버전 정보(APK 주소, 크기, SHA-256, 변경 내용). 앱 내 업데이트가 이 파일을 읽음. **자동 생성** |
 | `apps/<앱>/history.json` | 최근 버전 기록(최대 30개). **자동 생성** |
 | `apps/event-game-editor/sounds.json` | 에디터 기본 소리 목록(이름·길이·출처, 파일은 에디터 저장소 링크). **자동 생성** |
+| `apps/event-game-editor/docs/` | 사건 게임 에디터의 **문서** 탭 목록(`docs.json`)과 문서. `*.md`가 원본이고 `*.html`은 `python3 apps/event-game-editor/docs/build-docs.py`로 **자동 생성** |
 | `apps/event-game-editor/fx/` | 사건 게임 에디터의 연출 예시(움직이는 WebP 86개)와 `effects.json`. **자동 생성**: 에디터 저장소에서 `node make-fx-gallery.cjs <이 폴더>` |
 | Releases | APK 파일. 태그 형식 `<앱>-v<버전>` (예: `nai-pocket-v0.11.40r`) |
 
@@ -37,3 +38,4 @@
    ```
 5. `manifest`는 다른 저장소의 주소도 됩니다. 사건 게임 에디터는 에디터 저장소의 `release/update.json`(앱 자동 업데이트가 읽는 파일, `apkUrl`·`publishedAt` 포함)을 그대로 읽습니다.
 6. `sounds`에 `sounds.json` 경로를 적으면 **연출** 탭 위에 [연출 예시 | 기본 소리] 전환이 생겨, 줄을 눌러 바로 들을 수 있습니다(효과음·환경음·배경음악, 화면 높이에 맞춰 쪽 넘기기). 연출 예시 중 소리가 나는 효과는 카드의 스피커 버튼과 크게 보기의 **소리 듣기**로 애니메이션을 기다리지 않고 바로 들을 수 있습니다. 소리 파일은 에디터 저장소에서 바로 재생하므로 늘 에디터와 같습니다. 만들기: 에디터 저장소에서 `python3 make-sound-library.py --site <이 폴더>/apps/event-game-editor`, 연출 소리 연결은 `node make-fx-gallery.cjs <fx 폴더> --json-only`.
+7. `docs`에 `docs.json` 경로를 적으면 업데이트 앞에 **문서** 탭이 생깁니다. 번호가 붙은 문서 목록(한 쪽 3개, 낮은 화면 2개)이 나오고, 누르면 화면 전체로 읽기 창이 열립니다(안에서 스크롤 · ↑ 맨 위로 · 뒤로가기로 닫기). 문서를 더하려면 `docs.json`에 항목(제목·요약·읽는 시간·`md`·`src`)을 넣고 `build-docs.py`를 실행합니다.

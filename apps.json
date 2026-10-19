@@ -204,6 +204,7 @@
       "manifest": "https://raw.githubusercontent.com/stockYandere/choiceEditor/HEAD/release/update.json",
       "effects": "apps/event-game-editor/fx/effects.json",
       "sounds": "apps/event-game-editor/sounds.json",
+      "docs": "apps/event-game-editor/docs/docs.json",
       "inAppUpdate": true,
       "featureGroups": [
         {
@@ -270,7 +271,7 @@
         },
         {
           "title": "사건 쓰기",
-          "body": "이야기 탭에서 사건을 고르고 내용 · 선택 결과 · 그림 · 연출 · 소리 탭을 차례로 채웁니다. 모든 입력은 자동 저장되고 ↶로 되돌릴 수 있습니다."
+          "body": "이야기 탭에서 사건을 고르고 내용 · 선택지 · 그림 · 연출 · 소리 탭을 차례로 채웁니다. 모든 입력은 자동 저장되고 ↶로 되돌릴 수 있습니다."
         },
         {
           "title": "연출 넣기",

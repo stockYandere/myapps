@@ -962,3 +962,54 @@ kbd {
   .snd-row { min-height: 42px; }
 }
 .snd-list { overflow: hidden; }
+
+/* ---- helpful documents ---------------------------------------------------- */
+
+.doc-list { display: grid; gap: 10px; }
+.doc-row {
+  display: flex; gap: 12px; align-items: flex-start; width: 100%; padding: 14px; text-align: left;
+  border: 1px solid var(--line-strong); border-radius: 16px; background: var(--raised); color: var(--text); font: inherit; cursor: pointer;
+}
+.doc-row:active { transform: scale(.99); }
+.doc-num {
+  flex: none; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 10px;
+  background: var(--a); color: #0b0d12; font-weight: 800; font-size: 15px;
+}
+.doc-text { display: grid; gap: 4px; min-width: 0; }
+.doc-text b { font-size: 16px; letter-spacing: -.02em; line-height: 1.35; }
+.doc-text small { color: var(--muted); font-size: 13px; line-height: 1.5; }
+.doc-text em { color: var(--faint); font-size: 12px; font-style: normal; font-weight: 600; }
+
+.doc-reader {
+  width: min(100vw, 720px); max-width: 100vw; height: 100dvh; max-height: 100dvh; margin: 0 auto; padding: 0;
+  border: 0; background: var(--surface); color: var(--text);
+}
+.doc-reader::backdrop { background: rgba(0, 0, 0, .62); }
+.doc-reader[open] { display: flex; flex-direction: column; }
+.doc-head { flex: none; display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-bottom: 1px solid var(--line); }
+.doc-head h2 { flex: 1; min-width: 0; margin: 0; font-size: 17px; letter-spacing: -.03em; line-height: 1.35; }
+.doc-body { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 4px 16px 72px; font-size: 15.5px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere; }
+.doc-body:focus { outline: none; }
+.doc-body h2 { margin: 30px 0 10px; font-size: 20px; letter-spacing: -.03em; line-height: 1.35; padding-top: 14px; border-top: 1px solid var(--line); }
+.doc-body h3 { margin: 22px 0 8px; font-size: 17px; letter-spacing: -.02em; }
+.doc-body p { margin: 0 0 12px; }
+.doc-body .doc-meta { margin: 12px 0 4px; color: var(--faint); font-size: 12.5px; }
+.doc-body ul, .doc-body ol { margin: 0 0 12px; padding-left: 22px; }
+.doc-body li { margin: 4px 0; }
+.doc-body li > ul, .doc-body li > ol { margin: 4px 0 6px; }
+.doc-body li.task { list-style: none; margin-left: -22px; display: flex; gap: 8px; }
+.doc-body li.task .box { flex: none; width: 16px; height: 16px; margin-top: 6px; border: 1.5px solid var(--muted); border-radius: 4px; }
+.doc-body strong { color: var(--text); }
+.doc-body a { color: var(--a); text-underline-offset: 3px; }
+.doc-body code { padding: 1px 5px; border-radius: 6px; background: var(--raised); font-family: inherit; font-size: .92em; font-weight: 600; }
+.doc-body pre { margin: 0 0 14px; padding: 12px; border-radius: 12px; background: var(--raised); overflow-x: auto; font-size: 13.5px; line-height: 1.6; white-space: pre-wrap; }
+.doc-body pre code { padding: 0; background: none; }
+.doc-top { position: absolute; right: 16px; bottom: 16px; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line-strong); background: var(--raised); color: var(--text); font-size: 18px; box-shadow: var(--shadow); }
+.doc-flow { margin: 6px 0 16px; padding: 12px; border-radius: 16px; background: var(--raised); }
+.doc-flow ol { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+.doc-flow li { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; padding: 9px 12px; border-radius: 12px; border: 1px solid var(--line-strong); font-size: 14px; }
+.doc-flow li span { color: var(--muted); font-size: 12.5px; text-align: right; }
+.doc-flow li.story { border-color: var(--a); }
+.doc-flow li.roll { border-style: dashed; margin: 0 18px; }
+.doc-flow li.end { background: var(--surface); }
+.doc-flow figcaption { margin-top: 8px; color: var(--faint); font-size: 12px; text-align: center; }
