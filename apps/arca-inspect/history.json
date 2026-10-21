@@ -2,6 +2,18 @@
   {
     "app": "arca-inspect",
     "packageName": "app.arcainspect.r",
+    "versionCode": 10,
+    "versionName": "0.1.9",
+    "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.9/Arca-Inspect-R-v0.1.9.apk",
+    "sha256": "f08994bcf4eaebb90531d5f23e28a1cdf5ce7e0656f8af0e3dafb5769e962177",
+    "size": 885766,
+    "minSdk": 23,
+    "publishedAt": "2026-10-21T16:49:45Z",
+    "notes": "- 아카라이브 알림을 폰 알림으로 받기. ⚙ 설정에서 \"아카라이브 알림 받기\"를 켜면 15분마다(Android 최소 간격) 백그라운드에서 앱의 로그인 정보로 아카라이브 알림 목록을 확인하고, 읽지 않은 새 알림(댓글·답글·멘션 등)을 폰 알림으로 표시. 알림을 누르면 해당 글을 앱에서 열기(앱이 켜져 있으면 새 탭).\n- 처음 켤 때는 이미 있던 알림을 띄우지 않고 이후 새 알림부터 알림. 같은 알림은 한 번만.\n- 설정에 \"지금 확인\" 버튼과 마지막 확인 결과(새 알림 수, 로그인 필요, 보안 확인 차단 등) 표시. Android 13 이상은 켤 때 알림 권한 요청.\n- 설정 창을 한 화면(첫 화면 선택·알림·메모/차단 목록)으로 정리.\n- 알림 목록 해석·중복 방지 테스트 추가. 실기기에서 로그인 상태의 백그라운드 확인(Cloudflare 통과 여부) 미확인."
+  },
+  {
+    "app": "arca-inspect",
+    "packageName": "app.arcainspect.r",
     "versionCode": 9,
     "versionName": "0.1.8",
     "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.8/Arca-Inspect-R-v0.1.8.apk",
