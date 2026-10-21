@@ -2,6 +2,18 @@
   {
     "app": "arca-inspect",
     "packageName": "app.arcainspect.r",
+    "versionCode": 11,
+    "versionName": "0.1.10",
+    "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.10/Arca-Inspect-R-v0.1.10.apk",
+    "sha256": "24e0ebf6a40817b1a7d1ff9a724cc79d035ee14c3ae1e920e1bdbcbed7594040",
+    "size": 881670,
+    "minSdk": 23,
+    "publishedAt": "2026-10-21T17:05:13Z",
+    "notes": "- v0.1.9의 아카라이브 알림 기능 제거. Android 백그라운드 확인은 최소 15분 간격이라 실시간 알림이 되지 않아서. 알림 권한·백그라운드 작업·설정 항목 삭제, 이미 켜 두었던 경우 업데이트 후 첫 실행 때 예약된 확인과 알림 채널을 정리. 설정은 v0.1.8과 같이 첫 화면 선택과 메모·차단 목록."
+  },
+  {
+    "app": "arca-inspect",
+    "packageName": "app.arcainspect.r",
     "versionCode": 10,
     "versionName": "0.1.9",
     "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.9/Arca-Inspect-R-v0.1.9.apk",
