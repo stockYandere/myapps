@@ -1,12 +1,12 @@
 {
   "app": "arca-inspect",
   "packageName": "app.arcainspect.r",
-  "versionCode": 8,
-  "versionName": "0.1.7",
-  "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.7/Arca-Inspect-R-v0.1.7.apk",
-  "sha256": "4ab32a74126af587a56f9d4116b3922423cc3fbc2949dded7e353fa80713269c",
-  "size": 877574,
+  "versionCode": 9,
+  "versionName": "0.1.8",
+  "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.8/Arca-Inspect-R-v0.1.8.apk",
+  "sha256": "423e62c7ee4f43425e172981321e916dd427b45c41489910933821df6bd49409",
+  "size": 881670,
   "minSdk": 23,
-  "publishedAt": "2026-10-18T01:09:16Z",
-  "notes": "- 닉네임 옆 메모를 \"닉네임 - 메모\" 형태의 작은 빨간 글씨로 변경. 배경과 📝 아이콘 제거, 닉네임보다 작게 표시. 사용자 페이지 상단 메모와 메모·차단 목록에서도 아이콘 제거."
+  "publishedAt": "2026-10-21T15:53:19Z",
+  "notes": "- 탭 줄 오른쪽 끝(☆ 옆)에 ⚙ 설정 추가. 앱을 열 때 첫 화면을 AI 그림 채널(기본) 또는 구독 채널(아카라이브 메인, 구독채널 바로가기)로 선택. 바꾸면 1번 탭에 바로 적용되고 다음 실행부터 그 화면에서 시작.\n- 구독 채널로 시작하면 1번 탭 이름이 \"구독채널\"이 되고, 1번 탭을 다시 누르면 메인을 새로 불러옴(채널 목록을 보던 중이면 그 목록을 새로고침). AI 그림 채널 모드의 동작은 기존과 동일. ＋ 새 탭은 계속 AI 그림 채널.\n- 설정에서 메모·차단 목록도 바로 열 수 있음."
 }
