@@ -1,4 +1,32 @@
-<p class="doc-meta">2026-10-21 작성 · 에디터 v0.1.52 기준</p>
+<p class="doc-meta">2026-10-21 작성 · 에디터 v0.1.53 기준</p>
+<h2 id="기호-요약">기호 요약</h2>
+<p>내용 탭의 <strong>기호</strong> 버튼을 누르고 고르면 바로 들어갑니다.</p>
+<ul>
+<li><code>{ }</code> 변주 묶기
+</li>
+<li><code>|</code> 칸 나누기 — <code>{A|B}</code>
+</li>
+<li><code>?</code> 앞은 조건, 뒤는 문장 — <code>{용기? 들어간다|망설인다}</code>
+</li>
+<li><code>!</code> 없을 때 — <code>{!우산? 젖었다}</code>
+</li>
+<li><code>&gt;= &lt;= &gt; &lt; = !=</code> 숫자 비교 — <code>{돈&gt;=5? 부자다}</code>
+</li>
+<li><code>&amp;</code> 조건 모두 만족 — <code>{용기 &amp; 붕대? …}</code>
+</li>
+<li><code>|</code>만 쓰기 — 방문마다 다음 칸 — <code>{처음|또|계속}</code>
+</li>
+<li><code>&amp;</code> 맨 앞 — 방문마다 돌아가며 — <code>{&amp;아침|점심|저녁}</code>
+</li>
+<li><code>~</code> 맨 앞 — 무작위 — <code>{~비|바람}</code>
+</li>
+<li><code>@</code> 그 사건을 지나왔을 때 — <code>{@다리 위? …}</code>
+</li>
+<li><code>=</code> 숫자 표시 — <code>{=돈}원</code>
+</li>
+<li><code>\</code> 기호를 글자 그대로 — <code>\{</code>
+</li></ul>
+<p>조건 자리에는 체력 · 멘탈 · 돈 · 방문 · 보유 항목 이름을 씁니다. 아래는 자세한 설명입니다.</p>
 <h2 id="한눈에-보기">한눈에 보기</h2>
 <p>대사 변주는 같은 사건, 같은 대사 안에서 <strong>단어나 문장 일부만</strong> 상황에 따라 바꾸는 작은 문법입니다. 사건을 복사해 갈래를 늘리지 않고도 &quot;내가 한 일을 게임이 기억한다&quot;는 느낌을 줄 수 있습니다.</p>
 <p>모든 변주는 중괄호 <code>{ }</code> 하나로 감쌉니다. 안에 무엇을 쓰느냐에 따라 다섯 가지로 읽힙니다.</p>
@@ -169,6 +197,8 @@
 </li>
 <li><strong>＋무작위</strong> — <code>{~하나|둘|셋}</code>
 </li></ul>
+</li>
+<li><strong>기호 버튼:</strong> 변주 버튼 줄의 <strong>기호</strong>를 누르면 기호 창이 열리고, 하나를 누르면 커서 자리에 들어갑니다. 키보드는 닫히지 않습니다. 괄호 밖에서 <code>~</code> <code>=</code> <code>@</code> <code>!</code> <code>&amp;</code> 를 고르면 괄호까지 넣어 줍니다(<code>{~|}</code>, <code>{=}</code>, <code>{@? |}</code>).
 </li>
 <li><strong><code>{</code> 자동 완성:</strong> <code>{</code> 만 치면 <code>{|}</code> 가 함께 들어가고 커서는 첫 칸에 있습니다. 칸 끝에서 <code>|</code> 나 <code>}</code> 를 치면 이미 있는 기호를 넘어갑니다.
 </li>
