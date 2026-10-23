@@ -647,7 +647,18 @@
     update();
   }
 
+  // #/<app>/docs/read/<doc id> opens that document over the docs list (links from the apps themselves).
+  function readLink() {
+    var parts = location.hash.replace(/^#\/?/, '').split('/');
+    if (parts[1] !== 'docs' || parts[2] !== 'read') return -1;
+    var app = findApp(parts[0]), list = (app && app.docsList) || [];
+    for (var i = 0; i < list.length; i++) if (list[i].id === decodeURIComponent(parts[3] || '')) return i;
+    return -1;
+  }
+
   function route() {
+    var doc = readLink();
+    if (doc >= 0) history.replaceState(null, '', hashFor(findApp(location.hash.replace(/^#\/?/, '').split('/')[0]), 'docs', Math.floor(doc / docsPerPage())));
     var next = parseHash();
     var dir = next.app === current.app && next.view === current.view && next.index !== current.index
       ? (next.index > current.index ? 'next' : 'prev') : '';
@@ -655,6 +666,7 @@
     current.view = next.view;
     current.index = next.index;
     render(dir);
+    if (doc >= 0) openDoc(doc);
   }
 
   /** Steps replace the URL instead of adding history entries, so Back leaves the page. */
