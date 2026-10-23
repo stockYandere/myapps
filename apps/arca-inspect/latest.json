@@ -1,12 +1,12 @@
 {
   "app": "arca-inspect",
   "packageName": "app.arcainspect.r",
-  "versionCode": 11,
-  "versionName": "0.1.10",
-  "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.10/Arca-Inspect-R-v0.1.10.apk",
-  "sha256": "24e0ebf6a40817b1a7d1ff9a724cc79d035ee14c3ae1e920e1bdbcbed7594040",
+  "versionCode": 12,
+  "versionName": "0.1.11",
+  "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.11/Arca-Inspect-R-v0.1.11.apk",
+  "sha256": "38d57338429fa415fc3f7a13f377da3bcf0059e90b663a69ac99bbd415928e7f",
   "size": 881670,
   "minSdk": 23,
-  "publishedAt": "2026-10-21T17:05:13Z",
-  "notes": "- v0.1.9의 아카라이브 알림 기능 제거. Android 백그라운드 확인은 최소 15분 간격이라 실시간 알림이 되지 않아서. 알림 권한·백그라운드 작업·설정 항목 삭제, 이미 켜 두었던 경우 업데이트 후 첫 실행 때 예약된 확인과 알림 채널을 정리. 설정은 v0.1.8과 같이 첫 화면 선택과 메모·차단 목록."
+  "publishedAt": "2026-10-23T12:35:40Z",
+  "notes": "- 하단 글쓰기가 무조건 AI 그림 채널로 가던 문제 수정. 지금 보고 있는 채널(목록·게시글·글쓰기 화면)의 글쓰기로 이동하고, 메인·사용자 페이지처럼 채널 밖에서는 마지막으로 본 목록의 채널로 이동.\n- 하단 공지·전체·개념글도 같은 기준으로 지금 보고 있는 채널을 따름. 검색은 같은 채널이면 기존 검색 조건을 유지하고, 다른 채널의 글을 보고 있으면 그 채널에서 검색.\n- ＋ 새 탭이 설정한 첫 화면(AI 그림 채널 또는 구독 채널)으로 열림."
 }

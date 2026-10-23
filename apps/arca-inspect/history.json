@@ -2,6 +2,18 @@
   {
     "app": "arca-inspect",
     "packageName": "app.arcainspect.r",
+    "versionCode": 12,
+    "versionName": "0.1.11",
+    "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.11/Arca-Inspect-R-v0.1.11.apk",
+    "sha256": "38d57338429fa415fc3f7a13f377da3bcf0059e90b663a69ac99bbd415928e7f",
+    "size": 881670,
+    "minSdk": 23,
+    "publishedAt": "2026-10-23T12:35:40Z",
+    "notes": "- 하단 글쓰기가 무조건 AI 그림 채널로 가던 문제 수정. 지금 보고 있는 채널(목록·게시글·글쓰기 화면)의 글쓰기로 이동하고, 메인·사용자 페이지처럼 채널 밖에서는 마지막으로 본 목록의 채널로 이동.\n- 하단 공지·전체·개념글도 같은 기준으로 지금 보고 있는 채널을 따름. 검색은 같은 채널이면 기존 검색 조건을 유지하고, 다른 채널의 글을 보고 있으면 그 채널에서 검색.\n- ＋ 새 탭이 설정한 첫 화면(AI 그림 채널 또는 구독 채널)으로 열림."
+  },
+  {
+    "app": "arca-inspect",
+    "packageName": "app.arcainspect.r",
     "versionCode": 11,
     "versionName": "0.1.10",
     "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.10/Arca-Inspect-R-v0.1.10.apk",
