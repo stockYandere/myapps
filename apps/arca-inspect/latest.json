@@ -1,12 +1,12 @@
 {
   "app": "arca-inspect",
   "packageName": "app.arcainspect.r",
-  "versionCode": 12,
-  "versionName": "0.1.11",
-  "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.11/Arca-Inspect-R-v0.1.11.apk",
-  "sha256": "38d57338429fa415fc3f7a13f377da3bcf0059e90b663a69ac99bbd415928e7f",
+  "versionCode": 13,
+  "versionName": "0.1.12",
+  "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.12/Arca-Inspect-R-v0.1.12.apk",
+  "sha256": "855480a53f3a6731552158584f53cd14ac073fdc29fa1ea4c3228693813fa51f",
   "size": 881670,
   "minSdk": 23,
-  "publishedAt": "2026-10-23T12:35:40Z",
-  "notes": "- 하단 글쓰기가 무조건 AI 그림 채널로 가던 문제 수정. 지금 보고 있는 채널(목록·게시글·글쓰기 화면)의 글쓰기로 이동하고, 메인·사용자 페이지처럼 채널 밖에서는 마지막으로 본 목록의 채널로 이동.\n- 하단 공지·전체·개념글도 같은 기준으로 지금 보고 있는 채널을 따름. 검색은 같은 채널이면 기존 검색 조건을 유지하고, 다른 채널의 글을 보고 있으면 그 채널에서 검색.\n- ＋ 새 탭이 설정한 첫 화면(AI 그림 채널 또는 구독 채널)으로 열림."
+  "publishedAt": "2026-10-24T11:16:47Z",
+  "notes": "- ⚙ 설정에 \"목록에서 제목을 누르면 미리보기 이미지 보기\" 스위치 추가(기본 켜짐). 끄면 모든 게시글 목록·검색 결과(이어서 불러온 목록 포함)에서 제목을 눌러도 썸네일 미리보기가 뜨지 않음. 바꾸면 열린 탭에 바로 적용.\n- 설정 창을 한 화면(첫 화면 선택·미리보기 스위치·메모/차단 목록)으로 구성.\n- 실제 아카라이브 목록 페이지로 켜기/끄기·이어서 불러온 목록 적용 확인."
 }
