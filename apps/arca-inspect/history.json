@@ -2,6 +2,18 @@
   {
     "app": "arca-inspect",
     "packageName": "app.arcainspect.r",
+    "versionCode": 14,
+    "versionName": "0.1.13",
+    "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.13/Arca-Inspect-R-v0.1.13.apk",
+    "sha256": "274f1bb9817e39062f880fb02182f95c7c977f522bd702491a93a8b74af79600",
+    "size": 881670,
+    "minSdk": 23,
+    "publishedAt": "2026-10-26T15:29:06Z",
+    "notes": "- 게시글에서도 맨 위에서 화면을 아래로 당겨 새로고침. 놓으면 게시글을 다시 불러와 새로 달린 댓글이 보임. 뒤로 가기 기록은 그대로 유지(목록 새로고침과 달리 뒤로 가면 원래 목록으로 돌아감).\n- 글쓰기·수정 화면에서는 작성 중인 내용이 날아가지 않도록 당겨서 새로고침이 동작하지 않음."
+  },
+  {
+    "app": "arca-inspect",
+    "packageName": "app.arcainspect.r",
     "versionCode": 13,
     "versionName": "0.1.12",
     "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.12/Arca-Inspect-R-v0.1.12.apk",

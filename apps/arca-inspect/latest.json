@@ -1,12 +1,12 @@
 {
   "app": "arca-inspect",
   "packageName": "app.arcainspect.r",
-  "versionCode": 13,
-  "versionName": "0.1.12",
-  "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.12/Arca-Inspect-R-v0.1.12.apk",
-  "sha256": "855480a53f3a6731552158584f53cd14ac073fdc29fa1ea4c3228693813fa51f",
+  "versionCode": 14,
+  "versionName": "0.1.13",
+  "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.13/Arca-Inspect-R-v0.1.13.apk",
+  "sha256": "274f1bb9817e39062f880fb02182f95c7c977f522bd702491a93a8b74af79600",
   "size": 881670,
   "minSdk": 23,
-  "publishedAt": "2026-10-24T11:16:47Z",
-  "notes": "- ⚙ 설정에 \"목록에서 제목을 누르면 미리보기 이미지 보기\" 스위치 추가(기본 켜짐). 끄면 모든 게시글 목록·검색 결과(이어서 불러온 목록 포함)에서 제목을 눌러도 썸네일 미리보기가 뜨지 않음. 바꾸면 열린 탭에 바로 적용.\n- 설정 창을 한 화면(첫 화면 선택·미리보기 스위치·메모/차단 목록)으로 구성.\n- 실제 아카라이브 목록 페이지로 켜기/끄기·이어서 불러온 목록 적용 확인."
+  "publishedAt": "2026-10-26T15:29:06Z",
+  "notes": "- 게시글에서도 맨 위에서 화면을 아래로 당겨 새로고침. 놓으면 게시글을 다시 불러와 새로 달린 댓글이 보임. 뒤로 가기 기록은 그대로 유지(목록 새로고침과 달리 뒤로 가면 원래 목록으로 돌아감).\n- 글쓰기·수정 화면에서는 작성 중인 내용이 날아가지 않도록 당겨서 새로고침이 동작하지 않음."
 }
