@@ -1,12 +1,12 @@
 {
   "app": "arca-inspect",
   "packageName": "app.arcainspect.r",
-  "versionCode": 14,
-  "versionName": "0.1.13",
-  "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.13/Arca-Inspect-R-v0.1.13.apk",
-  "sha256": "274f1bb9817e39062f880fb02182f95c7c977f522bd702491a93a8b74af79600",
-  "size": 881670,
+  "versionCode": 15,
+  "versionName": "0.1.14",
+  "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.14/Arca-Inspect-R-v0.1.14.apk",
+  "sha256": "deb6c842afc964182f0a29a5684da1b0604062375c66bc4e303c5efbb8973f9c",
+  "size": 889862,
   "minSdk": 23,
-  "publishedAt": "2026-10-26T15:29:06Z",
-  "notes": "- 게시글에서도 맨 위에서 화면을 아래로 당겨 새로고침. 놓으면 게시글을 다시 불러와 새로 달린 댓글이 보임. 뒤로 가기 기록은 그대로 유지(목록 새로고침과 달리 뒤로 가면 원래 목록으로 돌아감).\n- 글쓰기·수정 화면에서는 작성 중인 내용이 날아가지 않도록 당겨서 새로고침이 동작하지 않음."
+  "publishedAt": "2026-10-27T01:44:31Z",
+  "notes": "- 게시글 본문 사진을 꾹 누르면(0.5초) 전체 화면 사진 보기가 열림. 누른 사진부터 시작해 좌우로 넘기면 본문의 다른 사진으로 이동(댓글 사진 제외), 위에 \"3 / 12\"처럼 번호 표시.\n- 두 손가락을 오므리고 펴서 확대·축소(최대 화면 맞춤의 4배, 큰 원본은 원본 픽셀의 2배까지), 확대한 상태에서는 한 손가락으로 이동. 확대하지 않은 상태에서만 좌우로 넘김.\n- 사진은 분석 화면과 같은 원본을 같은 캐시로 불러옴. 움직이는 GIF·WebP는 움직이는 그대로 표시. 한 변이 4096픽셀을 넘는 사진은 메모리를 위해 줄여서 표시(저장은 원본 그대로).\n- 저장 버튼으로 보고 있는 사진을 원본 그대로 Pictures/ArcaInspect에 저장. ×나 뒤로 가기로 닫기.\n- 사진을 짧게 탭하면 지금처럼 분석 화면이 열림. 꾹 누를 때 WebView 기본 길게 누르기 메뉴·텍스트 선택은 뜨지 않음."
 }
