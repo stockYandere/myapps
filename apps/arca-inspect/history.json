@@ -2,6 +2,18 @@
   {
     "app": "arca-inspect",
     "packageName": "app.arcainspect.r",
+    "versionCode": 16,
+    "versionName": "0.1.15",
+    "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.15/Arca-Inspect-R-v0.1.15.apk",
+    "sha256": "8d38add09c42f0d6d46a66514c8be3fdb14d83e2537e66dd52c9e3bef93602fb",
+    "size": 889862,
+    "minSdk": 23,
+    "publishedAt": "2026-10-28T00:51:31Z",
+    "notes": "- 탭 줄 오른쪽(☆ ⚙ 옆)에 ⟳ 새로고침 버튼 추가. 게시글은 제자리에서 다시 불러와 새 댓글 표시(뒤로 가기 기록 유지), 목록은 당겨서 새로고침과 같이 첫 페이지부터 새로, 메인·사용자 페이지 등은 제자리 새로고침. 글쓰기·수정 화면에서는 작성 중인 글을 지키기 위해 비활성(흐리게 표시).\n- 게시글에서 당겨서 새로고침이 안 되던 문제 수정. 본문 사진을 전부 받아야 로딩이 끝난 것으로 처리해서, 큰 사진이 많은 글은 한참 동안(사진 하나라도 멈추면 계속) 당겨도 반응이 없었음. 이제 글이 화면에 뜨면 사진이 아직 받아지는 중이어도 당기기·버튼 모두 동작하고, \"새로고침 중…\" 표시도 글이 뜨면 사라짐.\n- 페이지 연결에 실패한 뒤에도 바로 새로고침 가능."
+  },
+  {
+    "app": "arca-inspect",
+    "packageName": "app.arcainspect.r",
     "versionCode": 15,
     "versionName": "0.1.14",
     "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.14/Arca-Inspect-R-v0.1.14.apk",
