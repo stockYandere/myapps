@@ -1,12 +1,12 @@
 {
   "app": "arca-inspect",
   "packageName": "app.arcainspect.r",
-  "versionCode": 18,
-  "versionName": "0.1.17",
-  "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.17/Arca-Inspect-R-v0.1.17.apk",
-  "sha256": "1406d7c202592999131f29d4aee968e2f6f3563c5e11b9ac27e7c8d334e76bea",
-  "size": 898054,
+  "versionCode": 19,
+  "versionName": "0.1.18",
+  "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.18/Arca-Inspect-R-v0.1.18.apk",
+  "sha256": "8d33067d046a44c7f863da0e6a0d6768f33223b1660f2f22c1728a2e9fabb285",
+  "size": 889862,
   "minSdk": 23,
-  "publishedAt": "2026-11-02T17:20:25Z",
-  "notes": "- 상단 \"아카라이브 알림 확인 중\" 고정 알림 때문에 앱 아이콘에 새 알림이 없어도 숫자 1이 뜨던 문제 수정. 고정 알림은 아이콘 숫자에서 빠지고, 실제 아카라이브 알림만 숫자로 표시."
+  "publishedAt": "2026-11-02T18:03:12Z",
+  "notes": "- v0.1.16의 아카라이브 알림(1분마다 확인) 기능 제거. 크롬의 아카라이브 웹 푸시 알림을 쓰기로 해서. 설정 항목, 상단 \"알림 확인 중\" 고정 알림, 백그라운드 확인, 재부팅 후 자동 시작, 알림·배터리 최적화 관련 권한 삭제. 켜 두었던 경우 업데이트 후 확인이 멈추고, 첫 실행 때 남은 알림 채널과 기록을 정리. 설정은 v0.1.15와 같이 첫 화면 선택·미리보기 스위치·메모/차단 목록."
 }
