@@ -2,6 +2,18 @@
   {
     "app": "arca-inspect",
     "packageName": "app.arcainspect.r",
+    "versionCode": 18,
+    "versionName": "0.1.17",
+    "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.17/Arca-Inspect-R-v0.1.17.apk",
+    "sha256": "1406d7c202592999131f29d4aee968e2f6f3563c5e11b9ac27e7c8d334e76bea",
+    "size": 898054,
+    "minSdk": 23,
+    "publishedAt": "2026-11-02T17:20:25Z",
+    "notes": "- 상단 \"아카라이브 알림 확인 중\" 고정 알림 때문에 앱 아이콘에 새 알림이 없어도 숫자 1이 뜨던 문제 수정. 고정 알림은 아이콘 숫자에서 빠지고, 실제 아카라이브 알림만 숫자로 표시."
+  },
+  {
+    "app": "arca-inspect",
+    "packageName": "app.arcainspect.r",
     "versionCode": 17,
     "versionName": "0.1.16",
     "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.16/Arca-Inspect-R-v0.1.16.apk",
