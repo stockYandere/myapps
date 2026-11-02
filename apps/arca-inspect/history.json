@@ -2,6 +2,18 @@
   {
     "app": "arca-inspect",
     "packageName": "app.arcainspect.r",
+    "versionCode": 20,
+    "versionName": "0.1.19",
+    "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.19/Arca-Inspect-R-v0.1.19.apk",
+    "sha256": "3c220780e39c043af2e2aa16faefb532fad853d4376385d4a04249c9cf5376b6",
+    "size": 889862,
+    "minSdk": 23,
+    "publishedAt": "2026-11-02T18:06:05Z",
+    "notes": "- 어느 화면에서든 뒤로 가기를 빠르게 두 번(0.6초 안에) 누르면 앱 종료. 이전 페이지로 두 단계 빨리 돌아가려고 연달아 누르면 종료되니 한 번씩 천천히 누르기.\n- 뒤로 가기로 더 돌아갈 곳이 없을 때(1번 탭의 첫 페이지)는 바로 꺼지지 않고 \"한 번 더 누르면 종료돼요.\" 안내, 2초 안에 한 번 더 누르면 종료. 이전 페이지로 돌아가기와 다른 탭 닫기는 그대로."
+  },
+  {
+    "app": "arca-inspect",
+    "packageName": "app.arcainspect.r",
     "versionCode": 19,
     "versionName": "0.1.18",
     "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.18/Arca-Inspect-R-v0.1.18.apk",
