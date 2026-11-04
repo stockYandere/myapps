@@ -2,6 +2,18 @@
   {
     "app": "arca-inspect",
     "packageName": "app.arcainspect.r",
+    "versionCode": 21,
+    "versionName": "0.1.20",
+    "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.20/Arca-Inspect-R-v0.1.20.apk",
+    "sha256": "59bc538efa8d2e689ff23f2be8df328ea8a1f13c2db067f4dddde94a497faeea",
+    "size": 889862,
+    "minSdk": 23,
+    "publishedAt": "2026-11-04T01:08:14Z",
+    "notes": "- 채널 이름을 눌러 목록을 열면 새로고침을 한 번 더 해야 새 글이 보이던 문제 수정. 앱이 무한 스크롤 목록을 저장해 뒀다가 링크로 목록을 열 때도 예전 목록으로 덮어써서였음. 이제 채널 이름·카테고리 탭·게시글의 목록 링크 등 링크로 목록을 열면 항상 서버의 새 목록을 보여주고, 저장된 목록(이어 붙인 글)은 뒤로 가기로 목록에 돌아올 때만 사용."
+  },
+  {
+    "app": "arca-inspect",
+    "packageName": "app.arcainspect.r",
     "versionCode": 20,
     "versionName": "0.1.19",
     "apkUrl": "https://github.com/stockYandere/myapps/releases/download/arca-inspect-v0.1.19/Arca-Inspect-R-v0.1.19.apk",
